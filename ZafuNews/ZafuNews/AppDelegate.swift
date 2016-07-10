@@ -15,7 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
+        window?.makeKeyAndVisible()
+        window?.backgroundColor = UIColor.init(red: 68/255.0, green: 138/255.0, blue: 255/255.0, alpha: 1)
+        
+        let basicVC = ZNMainViewController()
+        
+        window?.rootViewController = basicVC
+        
         return true
     }
 

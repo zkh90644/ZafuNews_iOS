@@ -21,10 +21,10 @@ class coreTabPage: UIView,UIScrollViewDelegate {
     let tabHight:CGFloat = 40
     var titleSize:CGFloat = 14
     var maxButtonWidth:CGFloat = 0
-    let tabBackground:UIColor = UIColor.whiteColor()
+    var tabBackground:UIColor = UIColor.whiteColor()
     var baseLine:UIView = {
         let line = UIView()
-        line.backgroundColor = UIColor.redColor()
+        line.backgroundColor = UIColor.whiteColor()
         line.setWidth(0)
         line.setHeight(2)
         return line
@@ -99,8 +99,8 @@ class coreTabPage: UIView,UIScrollViewDelegate {
             tabItem.setTitle(vc?.title, forState: UIControlState.Normal)
             tabItem.titleLabel?.baselineAdjustment = UIBaselineAdjustment.AlignCenters
             tabItem.titleLabel?.font = UIFont.systemFontOfSize(titleSize)
-            tabItem.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-            tabItem.setTitleColor(UIColor.redColor(), forState: UIControlState.Selected)
+            tabItem.setTitleColor(UIColor.init(red: 1, green: 1, blue: 1, alpha: 0.6), forState: UIControlState.Normal)
+            tabItem.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Selected)
             tabItem.addTarget(self, action:#selector(coreTabPage.selectTabButton(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             tabItem.tag = i
             tabScrollView.addSubview(tabItem)

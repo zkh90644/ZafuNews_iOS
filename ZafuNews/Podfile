@@ -1,0 +1,4 @@
+pod 'SnapKit'
+pod 'Alamofire'
+pod 'MBProgressHUD'
+use_frameworks!

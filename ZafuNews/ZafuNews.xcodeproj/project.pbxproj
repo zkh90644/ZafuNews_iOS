@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27200F871D31466500107D06 /* ZNMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200F861D31466500107D06 /* ZNMainViewController.swift */; };
+		27200F8C1D31F82900107D06 /* UIViewAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200F8B1D31F82900107D06 /* UIViewAddition.swift */; };
+		27200F8E1D31F83600107D06 /* coreTabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200F8D1D31F83600107D06 /* coreTabPage.swift */; };
+		27200FCA1D3215CF00107D06 /* ZNLeftBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200FC91D3215CF00107D06 /* ZNLeftBarView.swift */; };
+		27200FCC1D32221600107D06 /* ZNLeftBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200FCB1D32221600107D06 /* ZNLeftBarContentView.swift */; };
+		27BFA5E61D32278000414EA4 /* ZNLeftListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BFA5E51D32278000414EA4 /* ZNLeftListCell.swift */; };
+		27BFA5E81D32387500414EA4 /* ZNWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BFA5E71D32387500414EA4 /* ZNWeatherView.swift */; };
 		27FC637C1D31387E00A6C112 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC637B1D31387E00A6C112 /* AppDelegate.swift */; };
-		27FC637E1D31387E00A6C112 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC637D1D31387E00A6C112 /* ViewController.swift */; };
-		27FC63811D31387E00A6C112 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27FC637F1D31387E00A6C112 /* Main.storyboard */; };
 		27FC63831D31387E00A6C112 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27FC63821D31387E00A6C112 /* Assets.xcassets */; };
 		27FC63861D31387E00A6C112 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27FC63841D31387E00A6C112 /* LaunchScreen.storyboard */; };
 		27FC63911D31387E00A6C112 /* ZafuNewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC63901D31387E00A6C112 /* ZafuNewsTests.swift */; };
 		27FC639C1D31387E00A6C112 /* ZafuNewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC639B1D31387E00A6C112 /* ZafuNewsUITests.swift */; };
+		FE6DFCABBA0C96F700D16D4A /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A975EBC74746D7C49A3059F7 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +40,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27200F861D31466500107D06 /* ZNMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNMainViewController.swift; path = Class/Main/Controller/ZNMainViewController.swift; sourceTree = "<group>"; };
+		27200F8B1D31F82900107D06 /* UIViewAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewAddition.swift; path = support/UIViewAddition.swift; sourceTree = "<group>"; };
+		27200F8D1D31F83600107D06 /* coreTabPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = coreTabPage.swift; path = Class/Main/View/coreTabPage.swift; sourceTree = "<group>"; };
+		27200FC91D3215CF00107D06 /* ZNLeftBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNLeftBarView.swift; path = Class/Main/View/ZNLeftBarView.swift; sourceTree = "<group>"; };
+		27200FCB1D32221600107D06 /* ZNLeftBarContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNLeftBarContentView.swift; path = Class/Main/View/ZNLeftBarContentView.swift; sourceTree = "<group>"; };
+		27BFA5E51D32278000414EA4 /* ZNLeftListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNLeftListCell.swift; path = Class/Main/View/ZNLeftListCell.swift; sourceTree = "<group>"; };
+		27BFA5E71D32387500414EA4 /* ZNWeatherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNWeatherView.swift; path = Class/Main/View/ZNWeatherView.swift; sourceTree = "<group>"; };
 		27FC63781D31387E00A6C112 /* ZafuNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZafuNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27FC637B1D31387E00A6C112 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		27FC637D1D31387E00A6C112 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		27FC63801D31387E00A6C112 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		27FC63821D31387E00A6C112 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27FC63851D31387E00A6C112 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27FC63871D31387E00A6C112 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +58,9 @@
 		27FC63971D31387E00A6C112 /* ZafuNewsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZafuNewsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27FC639B1D31387E00A6C112 /* ZafuNewsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZafuNewsUITests.swift; sourceTree = "<group>"; };
 		27FC639D1D31387E00A6C112 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36537C57BDD13CEF65237AEA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		98E8821A2FD00AC4263EBF46 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		A975EBC74746D7C49A3059F7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE6DFCABBA0C96F700D16D4A /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +89,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27200F7D1D31426C00107D06 /* class */ = {
+			isa = PBXGroup;
+			children = (
+				27200F881D31F7AB00107D06 /* support */,
+				27200F7E1D3143BB00107D06 /* Main */,
+			);
+			name = class;
+			sourceTree = "<group>";
+		};
+		27200F7E1D3143BB00107D06 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				27200F811D3143CF00107D06 /* View */,
+				27200F801D3143CA00107D06 /* Model */,
+				27200F7F1D3143C200107D06 /* Controller */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		27200F7F1D3143C200107D06 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				27200F861D31466500107D06 /* ZNMainViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		27200F801D3143CA00107D06 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		27200F811D3143CF00107D06 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				27200F8D1D31F83600107D06 /* coreTabPage.swift */,
+				27200FC91D3215CF00107D06 /* ZNLeftBarView.swift */,
+				27200FCB1D32221600107D06 /* ZNLeftBarContentView.swift */,
+				27BFA5E51D32278000414EA4 /* ZNLeftListCell.swift */,
+				27BFA5E71D32387500414EA4 /* ZNWeatherView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		27200F881D31F7AB00107D06 /* support */ = {
+			isa = PBXGroup;
+			children = (
+				27200F8B1D31F82900107D06 /* UIViewAddition.swift */,
+			);
+			name = support;
+			sourceTree = "<group>";
+		};
 		27FC636F1D31387E00A6C112 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +150,8 @@
 				27FC638F1D31387E00A6C112 /* ZafuNewsTests */,
 				27FC639A1D31387E00A6C112 /* ZafuNewsUITests */,
 				27FC63791D31387E00A6C112 /* Products */,
+				A3D2A929A2EAACB5AF2E01C0 /* Pods */,
+				9E953AAB41B89C167D8BD925 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,9 +168,8 @@
 		27FC637A1D31387E00A6C112 /* ZafuNews */ = {
 			isa = PBXGroup;
 			children = (
+				27200F7D1D31426C00107D06 /* class */,
 				27FC637B1D31387E00A6C112 /* AppDelegate.swift */,
-				27FC637D1D31387E00A6C112 /* ViewController.swift */,
-				27FC637F1D31387E00A6C112 /* Main.storyboard */,
 				27FC63821D31387E00A6C112 /* Assets.xcassets */,
 				27FC63841D31387E00A6C112 /* LaunchScreen.storyboard */,
 				27FC63871D31387E00A6C112 /* Info.plist */,
@@ -125,6 +195,23 @@
 			path = ZafuNewsUITests;
 			sourceTree = "<group>";
 		};
+		9E953AAB41B89C167D8BD925 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A975EBC74746D7C49A3059F7 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3D2A929A2EAACB5AF2E01C0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				98E8821A2FD00AC4263EBF46 /* Pods.debug.xcconfig */,
+				36537C57BDD13CEF65237AEA /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +219,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27FC63A01D31387E00A6C112 /* Build configuration list for PBXNativeTarget "ZafuNews" */;
 			buildPhases = (
+				92E1CDFAF7DC5F03BA2188DB /* Check Pods Manifest.lock */,
 				27FC63741D31387E00A6C112 /* Sources */,
 				27FC63751D31387E00A6C112 /* Frameworks */,
 				27FC63761D31387E00A6C112 /* Resources */,
+				A67E1A48D362C5C134252B37 /* Embed Pods Frameworks */,
+				201E7EB4FDB3C7062292E39A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -187,6 +277,7 @@
 		27FC63701D31387E00A6C112 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = ZN;
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = zkhCreator;
@@ -234,7 +325,6 @@
 			files = (
 				27FC63861D31387E00A6C112 /* LaunchScreen.storyboard in Resources */,
 				27FC63831D31387E00A6C112 /* Assets.xcassets in Resources */,
-				27FC63811D31387E00A6C112 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,13 +344,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		201E7EB4FDB3C7062292E39A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92E1CDFAF7DC5F03BA2188DB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A67E1A48D362C5C134252B37 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		27FC63741D31387E00A6C112 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27FC637E1D31387E00A6C112 /* ViewController.swift in Sources */,
 				27FC637C1D31387E00A6C112 /* AppDelegate.swift in Sources */,
+				27BFA5E81D32387500414EA4 /* ZNWeatherView.swift in Sources */,
+				27200F8E1D31F83600107D06 /* coreTabPage.swift in Sources */,
+				27200FCA1D3215CF00107D06 /* ZNLeftBarView.swift in Sources */,
+				27200F871D31466500107D06 /* ZNMainViewController.swift in Sources */,
+				27BFA5E61D32278000414EA4 /* ZNLeftListCell.swift in Sources */,
+				27200F8C1D31F82900107D06 /* UIViewAddition.swift in Sources */,
+				27200FCC1D32221600107D06 /* ZNLeftBarContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +440,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		27FC637F1D31387E00A6C112 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				27FC63801D31387E00A6C112 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		27FC63841D31387E00A6C112 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -400,6 +536,7 @@
 		};
 		27FC63A11D31387E00A6C112 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98E8821A2FD00AC4263EBF46 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ZafuNews/Info.plist;
@@ -411,6 +548,7 @@
 		};
 		27FC63A21D31387E00A6C112 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36537C57BDD13CEF65237AEA /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ZafuNews/Info.plist;
@@ -485,6 +623,7 @@
 				27FC63A21D31387E00A6C112 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27FC63A31D31387E00A6C112 /* Build configuration list for PBXNativeTarget "ZafuNewsTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +632,7 @@
 				27FC63A51D31387E00A6C112 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27FC63A61D31387F00A6C112 /* Build configuration list for PBXNativeTarget "ZafuNewsUITests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +641,7 @@
 				27FC63A81D31387F00A6C112 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
