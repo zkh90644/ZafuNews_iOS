@@ -11,9 +11,9 @@ import SnapKit
 
 let defaultColor = UIColor.init(red: 68/255.0, green: 138/255.0, blue: 255/255.0, alpha: 1)
 
-class ZNMainViewController: UIViewController,coreTabViewDelegate {
+class ZNMainViewController: UIViewController,coreTabViewDelegate{
 
-    let navVC = UINavigationController.init()
+    let navVC = ZNNavigationController.init()
     var switchView = coreTabPage()
     let leftBarView = ZNLeftBarView()
     let mainVC = UIViewController()
@@ -22,24 +22,21 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         switchView.delegate = self;
         
         initTitleView()
         initLeftBarView()
         
-        
-        
+//        代理
     }
+    
+//    MARK:界面设计
     
     func initTitleView() {
         //设置navigationBar size
         let oldFrame = view.frame
         let newFrame = CGRectMake(0, 20, oldFrame.width, oldFrame.height)
         navVC.view.frame = newFrame
-        navVC.navigationBar.translucent = false
-        navVC.navigationBar.barTintColor = defaultColor
-        navVC.navigationBar.tintColor = UIColor.whiteColor()
         
 //        设置statusBar的颜色
         UIApplication.sharedApplication().statusBarStyle = preferredStatusBarStyle()
@@ -53,28 +50,12 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate {
         navVC.navigationBar.titleTextAttributes = titleDic
         navVC.navigationBar.topItem?.title = "农大新闻网"
         
-//        设置左侧按钮
-        let leftButton = getButton(UIImage.init(named: "list")!)
-        leftButton.addTarget(self, action: #selector(leftViewAction), forControlEvents: UIControlEvents.TouchUpInside)
-        let leftItem = UIBarButtonItem.init(customView: leftButton)
-        navVC.navigationBar.topItem?.leftBarButtonItem = leftItem
-        
-//        设置右边按钮
-        let scanButton = getButton(UIImage.init(named: "scan")!)
-        scanButton.addTarget(self, action: #selector(printWorld), forControlEvents: UIControlEvents.TouchUpInside)
-        let scanBarButton = UIBarButtonItem.init(customView: scanButton)
-        
-        let searchButton = getButton(UIImage.init(named: "search")!)
-        searchButton.addTarget(self, action: #selector(printWorld), forControlEvents: UIControlEvents.TouchUpInside)
-        let searchBarButton = UIBarButtonItem.init(customView: searchButton)
-        
-        navVC.navigationBar.topItem?.rightBarButtonItems = [searchBarButton,scanBarButton]
-        
         addChildViewController(navVC)
         view.addSubview(navVC.view)
         
         removeNavigationBarBlackLine()
         
+        setTitleButton()
     }
     
     func initLeftBarView() {
@@ -87,22 +68,22 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate {
     }
     
     func initMainVC() {
-        let vc1 = UIViewController()
+        let vc1 = ZNInfoListViewController()
         vc1.title = "联系我们"
         vc1.view.backgroundColor = self.randomColor()
-        let vc2 = UIViewController()
+        let vc2 = ZNInfoListViewController()
         vc2.title = "故障解答"
         vc2.view.backgroundColor = self.randomColor()
-        let vc3 = UIViewController()
+        let vc3 = ZNInfoListViewController()
         vc3.title = "经验交流"
         vc3.view.backgroundColor = self.randomColor()
-        let vc4 = UIViewController()
+        let vc4 = ZNInfoListViewController()
         vc4.title = "近期公告"
         vc4.view.backgroundColor = self.randomColor()
-        let vc5 = UIViewController()
+        let vc5 = ZNInfoListViewController()
         vc5.title = "IT资讯"
         vc5.view.backgroundColor = self.randomColor()
-        let vc6 = UIViewController()
+        let vc6 = ZNInfoListViewController()
         vc6.title = "网上报修"
         vc6.view.backgroundColor = self.randomColor()
         
@@ -123,12 +104,32 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate {
         
     }
     
-//  action
+    func setTitleButton() {
+        //        设置左侧按钮
+        let leftButton = getButton(UIImage.init(named: "list")!)
+        leftButton.addTarget(self, action: #selector(leftViewAction), forControlEvents: UIControlEvents.TouchUpInside)
+        let leftItem = UIBarButtonItem.init(customView: leftButton)
+        navVC.navigationBar.topItem?.leftBarButtonItem = leftItem
+        
+        //        设置右边按钮
+        let scanButton = getButton(UIImage.init(named: "scan")!)
+        scanButton.addTarget(self, action: #selector(printWorld), forControlEvents: UIControlEvents.TouchUpInside)
+        let scanBarButton = UIBarButtonItem.init(customView: scanButton)
+        
+        let searchButton = getButton(UIImage.init(named: "search")!)
+        searchButton.addTarget(self, action: #selector(printWorld), forControlEvents: UIControlEvents.TouchUpInside)
+        let searchBarButton = UIBarButtonItem.init(customView: searchButton)
+        
+        navVC.navigationBar.topItem?.rightBarButtonItems = [searchBarButton,scanBarButton]
+
+    }
+    
+//  MARK: 按钮的action
     func leftViewAction() {
         leftBarView.showView()
     }
     
-    //MARK: corePageDelegate
+//  MARK: corePageDelegate
     func numberOfPage() -> Int {
         return vcArray.count
     }
@@ -145,8 +146,25 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate {
         return coreTabPage.Position.Bottom.rawValue
     }
     
-    //MARK: ViewSupport
+////  MARK: TableView delegate
+//    
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        var cell = tableView.dequeueReusableCellWithIdentifier("cell")
+//        if cell == nil {
+//            cell = UITableViewCell.init(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
+//            cell?.textLabel?.text = "helloworld"
+//        }
+//        
+//        return cell!
+//    }
+//    
+//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 20
+//    }
+//    
+//    
     
+//  MARK: 界面设计需要用到的函数
     func getButton(image:UIImage) -> UIButton {
         let button = UIButton.init(type: UIButtonType.Custom)
         button.setImage(image, forState: UIControlState.Normal)
@@ -178,8 +196,6 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate {
                 blackView.hidden = true
             }
         }
-        
-        
     }
 
 }
