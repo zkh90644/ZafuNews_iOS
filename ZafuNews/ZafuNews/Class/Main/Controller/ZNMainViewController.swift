@@ -11,7 +11,7 @@ import SnapKit
 
 let defaultColor = UIColor.init(red: 68/255.0, green: 138/255.0, blue: 255/255.0, alpha: 1)
 
-class ZNMainViewController: UIViewController,coreTabViewDelegate{
+class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDelegate{
 
     let navVC = ZNNavigationController.init()
     var switchView = coreTabPage()
@@ -27,8 +27,18 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate{
         initTitleView()
         initLeftBarView()
         
-//        代理
     }
+    
+    
+//  MARK:跳转界面代理
+    func pushToNextViewController(title: String) {
+        let nextVC = ZNNewInfoViewController()
+        nextVC.title = title
+        nextVC.navigationItem.backBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "back"), style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+
+        self.navVC.pushViewController(nextVC, animated: true)
+    }
+    
     
 //    MARK:界面设计
     
@@ -37,6 +47,7 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate{
         let oldFrame = view.frame
         let newFrame = CGRectMake(0, 20, oldFrame.width, oldFrame.height)
         navVC.view.frame = newFrame
+        
         
 //        设置statusBar的颜色
         UIApplication.sharedApplication().statusBarStyle = preferredStatusBarStyle()
@@ -77,25 +88,19 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate{
         let vc3 = ZNInfoListViewController()
         vc3.title = "经验交流"
         vc3.view.backgroundColor = self.randomColor()
-        let vc4 = ZNInfoListViewController()
-        vc4.title = "近期公告"
-        vc4.view.backgroundColor = self.randomColor()
-        let vc5 = ZNInfoListViewController()
-        vc5.title = "IT资讯"
-        vc5.view.backgroundColor = self.randomColor()
-        let vc6 = ZNInfoListViewController()
-        vc6.title = "网上报修"
-        vc6.view.backgroundColor = self.randomColor()
         
         self.vcArray.append(vc1)
         self.vcArray.append(vc2)
         self.vcArray.append(vc3)
-        self.vcArray.append(vc4)
-        self.vcArray.append(vc5)
-        self.vcArray.append(vc6)
+        
+        for item in self.vcArray {
+            let tmp = item as! ZNInfoListViewController
+            tmp.delegate = self
+        }
         
         mainVC.view.addSubview(switchView)
-        let frame = UIScreen.mainScreen().bounds
+        var frame = UIScreen.mainScreen().bounds
+        frame = CGRectMake(0, 0, frame.width, frame.height - (navVC.navigationBar.height+20+switchView.tabHight))
         switchView.frame = CGRectMake(0, 0, frame.width, frame.height)
         switchView.tabBackground = defaultColor
         
@@ -146,24 +151,6 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate{
         return coreTabPage.Position.Bottom.rawValue
     }
     
-////  MARK: TableView delegate
-//    
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        var cell = tableView.dequeueReusableCellWithIdentifier("cell")
-//        if cell == nil {
-//            cell = UITableViewCell.init(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
-//            cell?.textLabel?.text = "helloworld"
-//        }
-//        
-//        return cell!
-//    }
-//    
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 20
-//    }
-//    
-//    
-    
 //  MARK: 界面设计需要用到的函数
     func getButton(image:UIImage) -> UIButton {
         let button = UIButton.init(type: UIButtonType.Custom)
@@ -174,7 +161,7 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate{
     }
     
     func printWorld() {
-        print("hellworld")
+        print("helloworld")
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

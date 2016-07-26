@@ -8,18 +8,21 @@
 
 import UIKit
 
+protocol pushToInfoNewDelegate {
+    func pushToNextViewController(title:String)
+}
+
 class ZNInfoListViewController: UITableViewController {
+    
+    var delegate:pushToInfoNewDelegate?
 
     let ZNTableCell = UITableViewCell.init(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 10
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,7 +39,7 @@ class ZNInfoListViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 20
+        return 5
     }
 
 
@@ -44,14 +47,24 @@ class ZNInfoListViewController: UITableViewController {
         var cell = tableView.dequeueReusableCellWithIdentifier("cell")
         
         if (cell == nil) {
-            cell = UITableViewCell.init(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
-            cell!.textLabel?.text = "helloworld"
+            cell = ZNTableViewCell.init(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
         }
         
-        cell!.textLabel?.text = "helloworld"
-        // Configure the cell...
-
-        return cell!
+        let tmpCell = cell as! ZNTableViewCell
+        tmpCell.title.numberOfLines = 2
+        
+        tmpCell.title.text = "helloworldhelloworldhellowor"
+        
+        tmpCell.date.text = "2016-9-12"
+        tmpCell.editor.text = "无"
+        tmpCell.number.text = "2333"
+        
+        return tmpCell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.delegate?.pushToNextViewController("helloworld")
     }
     
 }

@@ -12,6 +12,7 @@
 		27200F8E1D31F83600107D06 /* coreTabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200F8D1D31F83600107D06 /* coreTabPage.swift */; };
 		27200FCA1D3215CF00107D06 /* ZNLeftBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200FC91D3215CF00107D06 /* ZNLeftBarView.swift */; };
 		27200FCC1D32221600107D06 /* ZNLeftBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200FCB1D32221600107D06 /* ZNLeftBarContentView.swift */; };
+		276AD9231D47A82300E958CA /* ZNNewInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276AD9221D47A82300E958CA /* ZNNewInfoViewController.swift */; };
 		278E639F1D33DFA10096BAF7 /* ZNNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E639E1D33DFA10096BAF7 /* ZNNavigationController.swift */; };
 		278E63A31D33E77D0096BAF7 /* ZNInfoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E63A21D33E77D0096BAF7 /* ZNInfoListViewController.swift */; };
 		278E63A51D33ECF60096BAF7 /* ZNTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E63A41D33ECF60096BAF7 /* ZNTableViewCell.swift */; };
@@ -48,6 +49,7 @@
 		27200F8D1D31F83600107D06 /* coreTabPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = coreTabPage.swift; path = Class/Main/View/coreTabPage.swift; sourceTree = "<group>"; };
 		27200FC91D3215CF00107D06 /* ZNLeftBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNLeftBarView.swift; path = Class/Main/View/ZNLeftBarView.swift; sourceTree = "<group>"; };
 		27200FCB1D32221600107D06 /* ZNLeftBarContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNLeftBarContentView.swift; path = Class/Main/View/ZNLeftBarContentView.swift; sourceTree = "<group>"; };
+		276AD9221D47A82300E958CA /* ZNNewInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNNewInfoViewController.swift; path = Class/newInfo/controller/ZNNewInfoViewController.swift; sourceTree = "<group>"; };
 		278E639E1D33DFA10096BAF7 /* ZNNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNNavigationController.swift; path = Class/Main/Controller/ZNNavigationController.swift; sourceTree = "<group>"; };
 		278E63A21D33E77D0096BAF7 /* ZNInfoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNInfoListViewController.swift; path = Class/Main/Controller/ZNInfoListViewController.swift; sourceTree = "<group>"; };
 		278E63A41D33ECF60096BAF7 /* ZNTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNTableViewCell.swift; path = Class/Main/View/ZNTableViewCell.swift; sourceTree = "<group>"; };
@@ -98,7 +100,7 @@
 		27200F7D1D31426C00107D06 /* class */ = {
 			isa = PBXGroup;
 			children = (
-				27BFA5E91D325DD800414EA4 /* InfoList */,
+				276AD91D1D47A74700E958CA /* newInfo */,
 				27200F881D31F7AB00107D06 /* support */,
 				27200F7E1D3143BB00107D06 /* Main */,
 			);
@@ -154,33 +156,26 @@
 			name = support;
 			sourceTree = "<group>";
 		};
-		27BFA5E91D325DD800414EA4 /* InfoList */ = {
+		276AD91D1D47A74700E958CA /* newInfo */ = {
 			isa = PBXGroup;
 			children = (
-				27BFA5EC1D325E0000414EA4 /* Controller */,
-				27BFA5EB1D325DFC00414EA4 /* View */,
-				27BFA5EA1D325DF500414EA4 /* Model */,
+				276AD9211D47A80500E958CA /* Controller */,
+				276AD91E1D47A75200E958CA /* View */,
 			);
-			name = InfoList;
+			name = newInfo;
 			sourceTree = "<group>";
 		};
-		27BFA5EA1D325DF500414EA4 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		27BFA5EB1D325DFC00414EA4 /* View */ = {
+		276AD91E1D47A75200E958CA /* View */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = View;
 			sourceTree = "<group>";
 		};
-		27BFA5EC1D325E0000414EA4 /* Controller */ = {
+		276AD9211D47A80500E958CA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				276AD9221D47A82300E958CA /* ZNNewInfoViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -439,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27FC637C1D31387E00A6C112 /* AppDelegate.swift in Sources */,
+				276AD9231D47A82300E958CA /* ZNNewInfoViewController.swift in Sources */,
 				278E639F1D33DFA10096BAF7 /* ZNNavigationController.swift in Sources */,
 				27BFA5E81D32387500414EA4 /* ZNWeatherView.swift in Sources */,
 				278E63A31D33E77D0096BAF7 /* ZNInfoListViewController.swift in Sources */,

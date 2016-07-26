@@ -19,8 +19,13 @@ class ZNNavigationController: UINavigationController {
 
     func setNavigationBarStyle() {
         self.navigationBar.translucent = false
-        self.navigationBar.barTintColor = defaultColor
         self.navigationBar.tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().backgroundColor = defaultColor
     }
     
+    override func pushViewController(viewController: UIViewController, animated: Bool) {
+        let button = UIBarButtonItem.init(title: "返回", style: UIBarButtonItemStyle.Done, target: nil, action: nil)
+        viewController.navigationItem.backBarButtonItem = button
+        super.pushViewController(viewController, animated: animated)
+    }
 }
