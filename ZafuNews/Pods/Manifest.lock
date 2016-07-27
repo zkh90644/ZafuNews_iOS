@@ -2,15 +2,18 @@ PODS:
   - Alamofire (3.4.1)
   - MBProgressHUD (0.9.2)
   - SnapKit (0.21.1)
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire
   - MBProgressHUD
   - SnapKit
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   SnapKit: bbad04cb016c7cead63965f16b00c09318d271ee
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0

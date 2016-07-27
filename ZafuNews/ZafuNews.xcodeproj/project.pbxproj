@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27026E411D487C0B00D270F5 /* ZNPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27026E401D487C0B00D270F5 /* ZNPopView.swift */; };
 		27200F871D31466500107D06 /* ZNMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200F861D31466500107D06 /* ZNMainViewController.swift */; };
 		27200F8C1D31F82900107D06 /* UIViewAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200F8B1D31F82900107D06 /* UIViewAddition.swift */; };
 		27200F8E1D31F83600107D06 /* coreTabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200F8D1D31F83600107D06 /* coreTabPage.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27026E401D487C0B00D270F5 /* ZNPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNPopView.swift; path = Class/newInfo/View/ZNPopView.swift; sourceTree = "<group>"; };
 		27200F861D31466500107D06 /* ZNMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNMainViewController.swift; path = Class/Main/Controller/ZNMainViewController.swift; sourceTree = "<group>"; };
 		27200F8B1D31F82900107D06 /* UIViewAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewAddition.swift; path = support/UIViewAddition.swift; sourceTree = "<group>"; };
 		27200F8D1D31F83600107D06 /* coreTabPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = coreTabPage.swift; path = Class/Main/View/coreTabPage.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 		276AD91E1D47A75200E958CA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				27026E401D487C0B00D270F5 /* ZNPopView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				276AD9231D47A82300E958CA /* ZNNewInfoViewController.swift in Sources */,
 				278E639F1D33DFA10096BAF7 /* ZNNavigationController.swift in Sources */,
 				27BFA5E81D32387500414EA4 /* ZNWeatherView.swift in Sources */,
+				27026E411D487C0B00D270F5 /* ZNPopView.swift in Sources */,
 				278E63A31D33E77D0096BAF7 /* ZNInfoListViewController.swift in Sources */,
 				27200F8E1D31F83600107D06 /* coreTabPage.swift in Sources */,
 				27200FCA1D3215CF00107D06 /* ZNLeftBarView.swift in Sources */,

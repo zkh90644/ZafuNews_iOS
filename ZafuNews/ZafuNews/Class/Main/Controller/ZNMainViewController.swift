@@ -23,7 +23,7 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
         super.viewDidLoad()
         
         switchView.delegate = self;
-        
+
         initTitleView()
         initLeftBarView()
         

@@ -9,11 +9,12 @@
 import UIKit
 
 class ZNNavigationController: UINavigationController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setNavigationBarStyle()
+        
         // Do any additional setup after loading the view.
     }
 

@@ -1,4 +1,5 @@
 pod 'SnapKit'
 pod 'Alamofire'
 pod 'MBProgressHUD'
+pod 'SwiftyJSON'
 use_frameworks!
