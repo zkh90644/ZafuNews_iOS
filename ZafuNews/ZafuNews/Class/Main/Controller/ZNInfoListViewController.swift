@@ -53,7 +53,7 @@ class ZNInfoListViewController: UITableViewController {
         let tmpCell = cell as! ZNTableViewCell
         tmpCell.title.numberOfLines = 2
         
-        tmpCell.title.text = "helloworldhelloworldhelloworhelloworldhelloworldhelloworhelloworldhelloworldhelloworhelloworldhelloworldhelloworhelloworldhelloworldhelloworhelloworldhelloworldhellowor"
+        tmpCell.title.text = "helloworldhelloworldhelloworhelloworldhelloworl"
         
         tmpCell.date.text = "2016-9-12"
         tmpCell.number.text = "2333"
@@ -63,7 +63,7 @@ class ZNInfoListViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.delegate?.pushToNextViewController("helloworld")
+        self.delegate?.pushToNextViewController("null")
     }
     
 }
