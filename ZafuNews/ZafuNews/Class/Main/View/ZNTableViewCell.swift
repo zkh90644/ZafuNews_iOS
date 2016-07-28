@@ -12,7 +12,7 @@ class ZNTableViewCell: UITableViewCell {
     
     var title:UILabel = UILabel.init()
     var date:UILabel = UILabel.init()
-    var editor:UILabel = UILabel.init()
+//    var editor:UILabel = UILabel.init()
     var number:UILabel = UILabel.init()
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -20,7 +20,7 @@ class ZNTableViewCell: UITableViewCell {
         
         self.contentView.addSubview(title)
         self.contentView.addSubview(date)
-        self.contentView.addSubview(editor)
+//        self.contentView.addSubview(editor)
         self.contentView.addSubview(number)
         
         title.snp_makeConstraints { (make) in
@@ -35,10 +35,10 @@ class ZNTableViewCell: UITableViewCell {
             make.bottom.equalTo(self.contentView).offset(-20)
         }
         
-        editor.snp_makeConstraints { (make) in
-            make.top.bottom.equalTo(self.date)
-            make.left.equalTo(self.date.snp_right).offset(10)
-        }
+//        editor.snp_makeConstraints { (make) in
+//            make.top.bottom.equalTo(self.date)
+//            make.left.equalTo(self.date.snp_right).offset(10)
+//        }
         
         number.snp_makeConstraints { (make) in
             make.right.equalTo(self.title)
@@ -49,7 +49,7 @@ class ZNTableViewCell: UITableViewCell {
         
         title.font = UIFont.init(name: (self.title.font?.fontName)!, size: 20)
         
-        editor.textColor = UIColor.init(red: 68/255.0, green: 138/255.0, blue: 1, alpha: 1)
+//        editor.textColor = UIColor.init(red: 68/255.0, green: 138/255.0, blue: 1, alpha: 1)
         date.textColor = UIColor.init(red: 68/255.0, green: 138/255.0, blue: 1, alpha: 1)
 
         number.textAlignment = NSTextAlignment.Center

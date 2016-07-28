@@ -13,10 +13,15 @@
 		27200F8E1D31F83600107D06 /* coreTabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200F8D1D31F83600107D06 /* coreTabPage.swift */; };
 		27200FCA1D3215CF00107D06 /* ZNLeftBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200FC91D3215CF00107D06 /* ZNLeftBarView.swift */; };
 		27200FCC1D32221600107D06 /* ZNLeftBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200FCB1D32221600107D06 /* ZNLeftBarContentView.swift */; };
+		2767EC4F1D49F56100FBC14E /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2767EC4E1D49F56100FBC14E /* Regex.swift */; };
+		2767EC531D4A0AD000FBC14E /* ZNMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2767EC521D4A0AD000FBC14E /* ZNMessageViewModel.swift */; };
 		276AD9231D47A82300E958CA /* ZNNewInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276AD9221D47A82300E958CA /* ZNNewInfoViewController.swift */; };
 		278E639F1D33DFA10096BAF7 /* ZNNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E639E1D33DFA10096BAF7 /* ZNNavigationController.swift */; };
 		278E63A31D33E77D0096BAF7 /* ZNInfoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E63A21D33E77D0096BAF7 /* ZNInfoListViewController.swift */; };
 		278E63A51D33ECF60096BAF7 /* ZNTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E63A41D33ECF60096BAF7 /* ZNTableViewCell.swift */; };
+		27A8355E1D49D9A30027E77E /* ZNMessageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A8355D1D49D9A30027E77E /* ZNMessageInfo.swift */; };
+		27A835631D49DC2A0027E77E /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A8355F1D49DBF50027E77E /* Ji.framework */; };
+		27A835641D49DC2A0027E77E /* Ji.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27A8355F1D49DBF50027E77E /* Ji.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27BFA5E61D32278000414EA4 /* ZNLeftListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BFA5E51D32278000414EA4 /* ZNLeftListCell.swift */; };
 		27BFA5E81D32387500414EA4 /* ZNWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BFA5E71D32387500414EA4 /* ZNWeatherView.swift */; };
 		27FC637C1D31387E00A6C112 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC637B1D31387E00A6C112 /* AppDelegate.swift */; };
@@ -44,6 +49,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		27A835651D49DC2B0027E77E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				27A835641D49DC2A0027E77E /* Ji.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		27026E401D487C0B00D270F5 /* ZNPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNPopView.swift; path = Class/newInfo/View/ZNPopView.swift; sourceTree = "<group>"; };
 		27200F861D31466500107D06 /* ZNMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNMainViewController.swift; path = Class/Main/Controller/ZNMainViewController.swift; sourceTree = "<group>"; };
@@ -51,10 +70,14 @@
 		27200F8D1D31F83600107D06 /* coreTabPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = coreTabPage.swift; path = Class/Main/View/coreTabPage.swift; sourceTree = "<group>"; };
 		27200FC91D3215CF00107D06 /* ZNLeftBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNLeftBarView.swift; path = Class/Main/View/ZNLeftBarView.swift; sourceTree = "<group>"; };
 		27200FCB1D32221600107D06 /* ZNLeftBarContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNLeftBarContentView.swift; path = Class/Main/View/ZNLeftBarContentView.swift; sourceTree = "<group>"; };
+		2767EC4E1D49F56100FBC14E /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Regex.swift; path = support/Regex.swift; sourceTree = "<group>"; };
+		2767EC521D4A0AD000FBC14E /* ZNMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNMessageViewModel.swift; path = Class/newInfo/model/ZNMessageViewModel.swift; sourceTree = "<group>"; };
 		276AD9221D47A82300E958CA /* ZNNewInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNNewInfoViewController.swift; path = Class/newInfo/controller/ZNNewInfoViewController.swift; sourceTree = "<group>"; };
 		278E639E1D33DFA10096BAF7 /* ZNNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNNavigationController.swift; path = Class/Main/Controller/ZNNavigationController.swift; sourceTree = "<group>"; };
 		278E63A21D33E77D0096BAF7 /* ZNInfoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNInfoListViewController.swift; path = Class/Main/Controller/ZNInfoListViewController.swift; sourceTree = "<group>"; };
 		278E63A41D33ECF60096BAF7 /* ZNTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNTableViewCell.swift; path = Class/Main/View/ZNTableViewCell.swift; sourceTree = "<group>"; };
+		27A8355D1D49D9A30027E77E /* ZNMessageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNMessageInfo.swift; path = Class/newInfo/model/ZNMessageInfo.swift; sourceTree = "<group>"; };
+		27A8355F1D49DBF50027E77E /* Ji.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Ji.framework; path = "/Users/Mike/Library/Developer/Xcode/DerivedData/ZafuNews-bahosfgzgjbpzrcsumltpiznzqnd/Build/Products/Debug-iphonesimulator/Ji.framework"; sourceTree = "<absolute>"; };
 		27BFA5E51D32278000414EA4 /* ZNLeftListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNLeftListCell.swift; path = Class/Main/View/ZNLeftListCell.swift; sourceTree = "<group>"; };
 		27BFA5E71D32387500414EA4 /* ZNWeatherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNWeatherView.swift; path = Class/Main/View/ZNWeatherView.swift; sourceTree = "<group>"; };
 		27FC63781D31387E00A6C112 /* ZafuNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZafuNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +102,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE6DFCABBA0C96F700D16D4A /* Pods.framework in Frameworks */,
+				27A835631D49DC2A0027E77E /* Ji.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,8 +126,8 @@
 		27200F7D1D31426C00107D06 /* class */ = {
 			isa = PBXGroup;
 			children = (
-				276AD91D1D47A74700E958CA /* newInfo */,
 				27200F881D31F7AB00107D06 /* support */,
+				276AD91D1D47A74700E958CA /* newInfo */,
 				27200F7E1D3143BB00107D06 /* Main */,
 			);
 			name = class;
@@ -154,6 +178,7 @@
 			children = (
 				27FC637B1D31387E00A6C112 /* AppDelegate.swift */,
 				27200F8B1D31F82900107D06 /* UIViewAddition.swift */,
+				2767EC4E1D49F56100FBC14E /* Regex.swift */,
 			);
 			name = support;
 			sourceTree = "<group>";
@@ -161,6 +186,7 @@
 		276AD91D1D47A74700E958CA /* newInfo */ = {
 			isa = PBXGroup;
 			children = (
+				27A8355A1D49D1A90027E77E /* Model */,
 				276AD9211D47A80500E958CA /* Controller */,
 				276AD91E1D47A75200E958CA /* View */,
 			);
@@ -183,9 +209,19 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		27A8355A1D49D1A90027E77E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				27A8355D1D49D9A30027E77E /* ZNMessageInfo.swift */,
+				2767EC521D4A0AD000FBC14E /* ZNMessageViewModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		27FC636F1D31387E00A6C112 = {
 			isa = PBXGroup;
 			children = (
+				27A8355F1D49DBF50027E77E /* Ji.framework */,
 				27FC637A1D31387E00A6C112 /* ZafuNews */,
 				27FC638F1D31387E00A6C112 /* ZafuNewsTests */,
 				27FC639A1D31387E00A6C112 /* ZafuNewsUITests */,
@@ -264,6 +300,7 @@
 				27FC63761D31387E00A6C112 /* Resources */,
 				A67E1A48D362C5C134252B37 /* Embed Pods Frameworks */,
 				201E7EB4FDB3C7062292E39A /* Copy Pods Resources */,
+				27A835651D49DC2B0027E77E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -437,15 +474,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				27FC637C1D31387E00A6C112 /* AppDelegate.swift in Sources */,
+				27A8355E1D49D9A30027E77E /* ZNMessageInfo.swift in Sources */,
 				276AD9231D47A82300E958CA /* ZNNewInfoViewController.swift in Sources */,
 				278E639F1D33DFA10096BAF7 /* ZNNavigationController.swift in Sources */,
 				27BFA5E81D32387500414EA4 /* ZNWeatherView.swift in Sources */,
+				2767EC4F1D49F56100FBC14E /* Regex.swift in Sources */,
 				27026E411D487C0B00D270F5 /* ZNPopView.swift in Sources */,
 				278E63A31D33E77D0096BAF7 /* ZNInfoListViewController.swift in Sources */,
 				27200F8E1D31F83600107D06 /* coreTabPage.swift in Sources */,
 				27200FCA1D3215CF00107D06 /* ZNLeftBarView.swift in Sources */,
 				278E63A51D33ECF60096BAF7 /* ZNTableViewCell.swift in Sources */,
 				27200F871D31466500107D06 /* ZNMainViewController.swift in Sources */,
+				2767EC531D4A0AD000FBC14E /* ZNMessageViewModel.swift in Sources */,
 				27BFA5E61D32278000414EA4 /* ZNLeftListCell.swift in Sources */,
 				27200F8C1D31F82900107D06 /* UIViewAddition.swift in Sources */,
 				27200FCC1D32221600107D06 /* ZNLeftBarContentView.swift in Sources */,

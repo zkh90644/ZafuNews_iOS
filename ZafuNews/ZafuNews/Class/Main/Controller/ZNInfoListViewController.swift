@@ -53,10 +53,9 @@ class ZNInfoListViewController: UITableViewController {
         let tmpCell = cell as! ZNTableViewCell
         tmpCell.title.numberOfLines = 2
         
-        tmpCell.title.text = "helloworldhelloworldhellowor"
+        tmpCell.title.text = "helloworldhelloworldhelloworhelloworldhelloworldhelloworhelloworldhelloworldhelloworhelloworldhelloworldhelloworhelloworldhelloworldhelloworhelloworldhelloworldhellowor"
         
         tmpCell.date.text = "2016-9-12"
-        tmpCell.editor.text = "无"
         tmpCell.number.text = "2333"
         
         return tmpCell

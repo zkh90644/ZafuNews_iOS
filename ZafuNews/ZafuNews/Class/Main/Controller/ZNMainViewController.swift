@@ -43,11 +43,6 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
 //    MARK:界面设计
     
     func initTitleView() {
-        //设置navigationBar size
-        let oldFrame = view.frame
-        let newFrame = CGRectMake(0, 20, oldFrame.width, oldFrame.height)
-        navVC.view.frame = newFrame
-        
         
 //        设置statusBar的颜色
         UIApplication.sharedApplication().statusBarStyle = preferredStatusBarStyle()
@@ -100,7 +95,7 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
         
         mainVC.view.addSubview(switchView)
         var frame = UIScreen.mainScreen().bounds
-        frame = CGRectMake(0, 0, frame.width, frame.height - (navVC.navigationBar.height+20+switchView.tabHight))
+        frame = CGRectMake(0, 0, frame.width, frame.height - (navVC.navigationBar.height+switchView.tabHight+20))   //此处20是status高度
         switchView.frame = CGRectMake(0, 0, frame.width, frame.height)
         switchView.tabBackground = defaultColor
         

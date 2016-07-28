@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Ji.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,7 +42,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>55D98E224ADC7D481400CE8E56BDBABE</key>
+		<key>05094CC4A047119F7ADC14EE74C4881C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>054D52FEC08BF053EF0546F087984134</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>49F7667C8129768A9D99982CFF3C3D2A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,7 +62,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7D163FD9F25A0A8F02BBE9E9A34EB714</key>
+		<key>C4F1DB440B42642636E376448A196E87</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,7 +72,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F660A37CFCF373CF12D1F0F37FE005C4</key>
+		<key>E9A9455F5A499B54F232C004DB8857F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
