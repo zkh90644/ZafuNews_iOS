@@ -37,6 +37,10 @@ class ZNMessageViewModel: UIScrollView,messageCallBackProtocol {
         }
     }
     
+    convenience init(){
+        self.init(frame:CGRectZero)
+    }
+    
     
 // MARK:delegate
     func finishLabel(){

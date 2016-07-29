@@ -9,7 +9,7 @@
 import UIKit
 
 protocol pushToInfoNewDelegate {
-    func pushToNextViewController(title:String)
+    func pushToNextViewController(title:String,url:String)
 }
 
 class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
@@ -19,6 +19,7 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
     let ZNTableCell = UITableViewCell.init(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
     var listModel:ZNListModel?
     var url:String
+    var infoArr = Array<(url:String,title:String)>()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         self.listModel = nil
@@ -80,15 +81,18 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
             tmpCell.date.text = cellText.date
             tmpCell.number.text = cellText.num
             tmpCell.url = cellText.url
+            
+            infoArr.append((cellText.url,cellText.title))
         }
-        
-        
         return tmpCell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.delegate?.pushToNextViewController("null")
+        
+        let info = infoArr[indexPath.row]
+        
+        self.delegate?.pushToNextViewController(info.title,url: info.url)
     }
     
     

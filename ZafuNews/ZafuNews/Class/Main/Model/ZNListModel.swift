@@ -46,9 +46,17 @@ class ZNListModel{
                                 title.appendContentsOf(item)
                             }
                         }
-                        //                    继续解析，删去图保留后面的内容
+                    //              继续解析，删去图保留后面的内容
                         var tempTitleArr = title.componentsSeparatedByString("    ")
                         title = tempTitleArr[1]
+                    }
+                    
+                    //              删去图字
+                    let titleArr = title.componentsSeparatedByString("[图]")
+                    if (titleArr.count == 1){
+                        title = titleArr[0]
+                    }else{
+                        title = titleArr[1]
                     }
                     
                     //              解析URL

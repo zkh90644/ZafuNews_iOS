@@ -11,6 +11,15 @@ import Ji
 import AlamofireImage
 import Alamofire
 
+extension String {
+    func urlEncode() -> String? {
+        let unreserved = "!=:-._~/?"
+        let allowed = NSMutableCharacterSet.alphanumericCharacterSet()
+        allowed.addCharactersInString(unreserved)
+        return stringByAddingPercentEncodingWithAllowedCharacters(allowed)
+    }
+}
+
 //该协议用来修改上一个VC的界面
 protocol messageCallBackProtocol {
     func changImage(count:Int)
@@ -96,7 +105,7 @@ class ZNMessageInfo{
                     
                     let url = baseURL + i["src"]!
                     
-                    Alamofire.request(.GET, url).responseImage { response in
+                    Alamofire.request(.GET, url.urlEncode()!).responseImage { response in
                         if let image = response.result.value {
                             self.imageDic.updateValue(image, forKey: url)
                             self.delegate?.changImage((images?.count)!)

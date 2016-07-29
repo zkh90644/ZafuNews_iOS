@@ -17,6 +17,7 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
     var switchView = coreTabPage()
     let leftBarView = ZNLeftBarView()
     let mainVC = UIViewController()
+    
     lazy var vcArray:Array<UIViewController> = Array<UIViewController>()
     
     override func viewDidLoad() {
@@ -30,11 +31,9 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
     
     
 //  MARK:跳转界面代理
-    func pushToNextViewController(title: String) {
-        let nextVC = ZNNewInfoViewController()
+    func pushToNextViewController(title: String,url:String) {
+        let nextVC = ZNNewInfoViewController(searchURL: url)
         nextVC.title = title
-        nextVC.navigationItem.backBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "back"), style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-
         self.navVC.pushViewController(nextVC, animated: true)
     }
     
@@ -75,13 +74,10 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
     func initMainVC() {
         let vc1 = ZNInfoListViewController()
         vc1.title = "联系我们"
-        vc1.view.backgroundColor = self.randomColor()
         let vc2 = ZNInfoListViewController()
         vc2.title = "故障解答"
-        vc2.view.backgroundColor = self.randomColor()
         let vc3 = ZNInfoListViewController()
         vc3.title = "经验交流"
-        vc3.view.backgroundColor = self.randomColor()
         
         self.vcArray.append(vc1)
         self.vcArray.append(vc2)

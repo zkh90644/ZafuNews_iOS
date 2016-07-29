@@ -11,11 +11,25 @@ import UIKit
 class ZNNewInfoViewController: UIViewController {
 
     let alertView = ZNPopView()
-    let messageViewModel = ZNMessageViewModel(baseURL: "http://news.zafu.edu.cn", searchURL: "http://news.zafu.edu.cn/articles/3/29801/")
+    var messageViewModel = ZNMessageViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setView()
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    convenience init(searchURL: String){
+        self.init(nibName: nil, bundle: nil)
+        
+        self.messageViewModel = ZNMessageViewModel(baseURL: "http://news.zafu.edu.cn",searchURL: searchURL)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func setView() {
