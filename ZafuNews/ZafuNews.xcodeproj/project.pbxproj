@@ -148,9 +148,9 @@
 		27200F7F1D3143C200107D06 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				278E63A21D33E77D0096BAF7 /* ZNInfoListViewController.swift */,
 				27200F861D31466500107D06 /* ZNMainViewController.swift */,
 				278E639E1D33DFA10096BAF7 /* ZNNavigationController.swift */,
-				278E63A21D33E77D0096BAF7 /* ZNInfoListViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

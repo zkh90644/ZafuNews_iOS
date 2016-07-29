@@ -12,17 +12,36 @@ protocol pushToInfoNewDelegate {
     func pushToNextViewController(title:String)
 }
 
-class ZNInfoListViewController: UITableViewController {
+class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
     
     var delegate:pushToInfoNewDelegate?
 
     let ZNTableCell = UITableViewCell.init(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
+    var listModel:ZNListModel?
+    var url:String
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        self.listModel = nil
+        self.url = ""
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    convenience init(){
+        self.init(nibName: nil, bundle: nil)
+        self.listModel = ZNListModel.init(baseURL: "http://news.zafu.edu.cn", url: "http://news.zafu.edu.cn/articles/3/?page=4")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 10
+        
+        listModel?.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +58,7 @@ class ZNInfoListViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return (listModel?.listArray.count)!
     }
 
 
@@ -53,10 +72,16 @@ class ZNInfoListViewController: UITableViewController {
         let tmpCell = cell as! ZNTableViewCell
         tmpCell.title.numberOfLines = 2
         
-        tmpCell.title.text = "helloworldhelloworldhelloworhelloworldhelloworl"
+        if listModel?.listArray.count != 0 {
+            let cellText:(title:String,url:String,date:String,num:String) = (listModel?.listArray[indexPath.row])!
+            
+            tmpCell.title.text = cellText.title
+                
+            tmpCell.date.text = cellText.date
+            tmpCell.number.text = cellText.num
+            tmpCell.url = cellText.url
+        }
         
-        tmpCell.date.text = "2016-9-12"
-        tmpCell.number.text = "2333"
         
         return tmpCell
     }
@@ -66,4 +91,9 @@ class ZNInfoListViewController: UITableViewController {
         self.delegate?.pushToNextViewController("null")
     }
     
+    
+    //MARK:Delegate
+    func finishLoadListView() {
+        self.tableView.reloadData()
+    }
 }

@@ -14,6 +14,7 @@ class ZNTableViewCell: UITableViewCell {
     var date:UILabel = UILabel.init()
 //    var editor:UILabel = UILabel.init()
     var number:UILabel = UILabel.init()
+    var url:String = ""
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style:style,reuseIdentifier:reuseIdentifier)

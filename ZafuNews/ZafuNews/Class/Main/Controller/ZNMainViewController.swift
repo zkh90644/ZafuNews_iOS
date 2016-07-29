@@ -26,8 +26,6 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
 
         initTitleView()
         initLeftBarView()
-        
-        var model = ZNListModel()
     }
     
     
