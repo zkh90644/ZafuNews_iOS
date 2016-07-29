@@ -10,7 +10,7 @@ import UIKit
 
 class ZNPopView: UIView {
     
-    var qcCode:UIButton = UIButton()
+    var qrCode:UIButton = UIButton()
     var save:UIButton = UIButton()
     var share:UIButton = UIButton()
     var picture:UIButton = UIButton()
@@ -19,23 +19,23 @@ class ZNPopView: UIView {
         super.init(frame: frame)
         
         share = self.setButton(UIImage.init(named: "Share")!, title: "分享")
-        qcCode = self.setButton(UIImage.init(named: "QCCode")!, title: "生成二维码")
+        qrCode = self.setButton(UIImage.init(named: "QCCode")!, title: "生成二维码")
         save = self.setButton(UIImage.init(named: "saveLocation")!, title: "保存到本地")
         picture = self.setButton(UIImage.init(named: "Out")!, title:"导出成图片")
         
-        self.addSubview(qcCode)
+        self.addSubview(qrCode)
         self.addSubview(save)
         self.addSubview(share)
         self.addSubview(picture)
         
-        qcCode.snp_makeConstraints { (make) in
+        qrCode.snp_makeConstraints { (make) in
             make.left.right.top.equalTo(self)
             make.height.equalTo(self).multipliedBy(0.25)
         }
         save.snp_makeConstraints { (make) in
             make.width.left.equalTo(self)
-            make.height.equalTo(qcCode)
-            make.top.equalTo(qcCode.snp_bottom)
+            make.height.equalTo(qrCode)
+            make.top.equalTo(qrCode.snp_bottom)
         }
         share.snp_makeConstraints { (make) in
             make.width.left.equalTo(self)
@@ -53,7 +53,7 @@ class ZNPopView: UIView {
         
         self.layer.cornerRadius = 5
         self.layer.masksToBounds = true
-        self.layer.shadowRadius = 2        
+        self.layer.shadowRadius = 2
     }
     
     func setButton(image:UIImage,title:String) -> UIButton {
@@ -72,8 +72,6 @@ class ZNPopView: UIView {
         button.titleLabel?.snp_makeConstraints(closure: { (make) in
             
         })
-        
-        
         
         return button
     }

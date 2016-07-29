@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>QRCode.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SnapKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,12 +52,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>054D52FEC08BF053EF0546F087984134</key>
+		<key>24C226FAF630D9E2B6D95DE807DA4103</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>49F7667C8129768A9D99982CFF3C3D2A</key>
+		<key>301181A4222A40F95A0C7B1C20518108</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>797788C9F5CB26F90E45F9815758AD8C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,12 +77,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
+		<key>D326DE55A6C3B236548CF2C1962D42EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E9A9455F5A499B54F232C004DB8857F4</key>
+		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
 		<dict>
 			<key>primary</key>
 			<true/>

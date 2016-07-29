@@ -12,10 +12,12 @@ class ZNNewInfoViewController: UIViewController {
 
     let alertView = ZNPopView()
     var messageViewModel = ZNMessageViewModel()
+    var url = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setView()
+        
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -24,7 +26,7 @@ class ZNNewInfoViewController: UIViewController {
     
     convenience init(searchURL: String){
         self.init(nibName: nil, bundle: nil)
-        
+        self.url = searchURL
         self.messageViewModel = ZNMessageViewModel(baseURL: "http://news.zafu.edu.cn",searchURL: searchURL)
     }
     
@@ -45,8 +47,7 @@ class ZNNewInfoViewController: UIViewController {
             make.edges.equalTo(self.view)
         }
         
-        
-        //        加入下拉栏
+//        加入下拉栏
         self.view.addSubview(alertView)
         alertView.hidden = true
         alertView.snp_makeConstraints { (make) in
@@ -55,7 +56,10 @@ class ZNNewInfoViewController: UIViewController {
             make.right.equalTo(self.view).offset(-10)
             make.top.equalTo(10)
         }
-
+        
+        
+//        addAction
+        self.alertView.qrCode.addTarget(self, action: #selector(clickQRButton), forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func showAndHidePopView() {
@@ -65,6 +69,12 @@ class ZNNewInfoViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    //    popButtonAction
+    func clickQRButton() {
+        let viewController = ZNQRCodeViewController.init(title: self.title!, url: self.url)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
 
