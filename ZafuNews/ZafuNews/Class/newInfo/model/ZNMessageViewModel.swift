@@ -54,7 +54,6 @@ class ZNMessageViewModel: UIScrollView,messageCallBackProtocol {
                     let image = messageModal.imageDic[keyArr.popLast()!]
                     let imageView = item as! UIImageView
                     imageView.image = image
-                    print(image)
                     
                     imageView.snp_updateConstraints(closure: { (make) in
                         make.height.equalTo(imageView.snp_width).multipliedBy((image?.size.height)! / (image?.size.width)!)

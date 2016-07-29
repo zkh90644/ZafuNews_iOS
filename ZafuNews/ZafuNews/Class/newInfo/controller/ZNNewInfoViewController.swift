@@ -24,8 +24,6 @@ class ZNNewInfoViewController: UIViewController {
         let back = UIBarButtonItem.init(image: UIImage.init(named: "back"), style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = back
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(showAndHidePopView))
-
-        
         
 //        设置内容界面
         self.view.addSubview(self.messageViewModel)
