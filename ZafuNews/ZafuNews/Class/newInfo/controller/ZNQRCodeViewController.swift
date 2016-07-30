@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import QRCode
+import SwiftQRCode
 
 class ZNQRCodeViewController: UIViewController {
 
@@ -41,11 +41,8 @@ class ZNQRCodeViewController: UIViewController {
         self.url = url
         
         let string = messageTitle + "\t\t\t" + url
-        print(string)
         
-        let code = QRCode.init(self.url)
-        qrImageView.image = code?.image
-        
+        qrImageView.image = QRCode.generateImage(string, avatarImage: nil)
         
     }
     
@@ -57,15 +54,4 @@ class ZNQRCodeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -60,6 +60,7 @@ class ZNNewInfoViewController: UIViewController {
         
 //        addAction
         self.alertView.qrCode.addTarget(self, action: #selector(clickQRButton), forControlEvents: UIControlEvents.TouchUpInside)
+        
     }
     
     func showAndHidePopView() {

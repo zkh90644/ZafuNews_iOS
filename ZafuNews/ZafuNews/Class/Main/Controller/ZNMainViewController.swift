@@ -108,7 +108,7 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
         
         //        设置右边按钮
         let scanButton = getButton(UIImage.init(named: "scan")!)
-        scanButton.addTarget(self, action: #selector(printWorld), forControlEvents: UIControlEvents.TouchUpInside)
+        scanButton.addTarget(self, action: #selector(pushToQRScan), forControlEvents: UIControlEvents.TouchUpInside)
         let scanBarButton = UIBarButtonItem.init(customView: scanButton)
         
         let searchButton = getButton(UIImage.init(named: "search")!)
@@ -122,6 +122,11 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
 //  MARK: 按钮的action
     func leftViewAction() {
         leftBarView.showView()
+    }
+    
+    func pushToQRScan() {
+        let qrscanVC = ZNQRScanViewController()
+        self.navVC.pushViewController(qrscanVC, animated: true)
     }
     
 //  MARK: corePageDelegate

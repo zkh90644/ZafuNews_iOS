@@ -29,12 +29,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>QRCode.xcscheme</key>
+		<key>SnapKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SnapKit.xcscheme</key>
+		<key>SwiftQRCode.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,17 +52,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>24C226FAF630D9E2B6D95DE807DA4103</key>
+		<key>4D36C494E228F2112250FD22C136038C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>301181A4222A40F95A0C7B1C20518108</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>797788C9F5CB26F90E45F9815758AD8C</key>
+		<key>54E9094A699FC84AC1C71F6C56608903</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,12 +67,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>ACD7A9D64A218CAF18EDA9E1CC3F0471</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C4F1DB440B42642636E376448A196E87</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D326DE55A6C3B236548CF2C1962D42EB</key>
+		<key>D0538F7F1471C3CB0333A96C62964CC1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

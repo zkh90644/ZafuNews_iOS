@@ -11,15 +11,6 @@ import Ji
 import AlamofireImage
 import Alamofire
 
-extension String {
-    func urlEncode() -> String? {
-        let unreserved = "!=:-._~/?"
-        let allowed = NSMutableCharacterSet.alphanumericCharacterSet()
-        allowed.addCharactersInString(unreserved)
-        return stringByAddingPercentEncodingWithAllowedCharacters(allowed)
-    }
-}
-
 //该协议用来修改上一个VC的界面
 protocol messageCallBackProtocol {
     func changImage(count:Int)

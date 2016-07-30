@@ -4,6 +4,6 @@ pod 'MBProgressHUD'
 pod 'SwiftyJSON'
 pod 'Ji'
 pod 'AlamofireImage'
-pod "QRCode", "~> 0.5"
+pod 'SwiftQRCode'
 
 use_frameworks!
