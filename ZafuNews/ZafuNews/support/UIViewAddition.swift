@@ -165,3 +165,17 @@ extension UIView{
     }
     
 }
+
+//extension UIView{
+//    func rotateView(duration:Double = 1.0,inout value:Bool) {
+//        UIView.animateWithDuration(duration, delay: 0, options: UIViewAnimationOptions.Repeat, animations: { 
+//            self.transform = CGAffineTransformRotate(self.transform, CGFloat(2 * M_PI))
+//            }) { (finished) in
+//                if finished && value {
+//                    value = false
+//                }else{
+//                    self.rotateView(value: &value)
+//                }
+//        }
+//    }
+//}

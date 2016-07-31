@@ -7,7 +7,7 @@ PODS:
   - Ji/Ji (1.2.0):
     - Ji/Ji-libxml
   - Ji/Ji-libxml (1.2.0)
-  - MBProgressHUD (0.9.2)
+  - MBProgressHUD (1.0.0)
   - SnapKit (0.21.1)
   - SwiftQRCode (2.0.2)
   - SwiftyJSON (2.3.2)
@@ -25,7 +25,7 @@ SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   AlamofireImage: 3ccf3347d9ea24580dc11fb892770a0be6a29826
   Ji: ddebb22f9ac445db6e884b66f78ea74fb135fdb7
-  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SnapKit: bbad04cb016c7cead63965f16b00c09318d271ee
   SwiftQRCode: 68e920781686e376d70646b90c8ad87fd6523309
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a

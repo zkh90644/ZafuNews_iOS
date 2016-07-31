@@ -60,6 +60,7 @@ class ZNNewInfoViewController: UIViewController {
         
 //        addAction
         self.alertView.qrCode.addTarget(self, action: #selector(clickQRButton), forControlEvents: UIControlEvents.TouchUpInside)
+        self.alertView.picture.addTarget(self, action: #selector(pushToImage), forControlEvents: UIControlEvents.TouchUpInside)
         
     }
     
@@ -78,6 +79,15 @@ class ZNNewInfoViewController: UIViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
+    func pushToImage() {
+//        var infoHeight = messageViewModel.contentSize
+//        for item in messageViewModel.viewArray {
+//            print(item.frame)
+//        }
+//        
+//        let vc = ZNSaveAsImageViewController.init(viewArr: messageViewModel.viewArray,frames:infoHeight)
+//        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
 
 }

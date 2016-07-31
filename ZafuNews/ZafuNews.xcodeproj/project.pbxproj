@@ -19,6 +19,8 @@
 		2768AEF01D4BA85900C529A6 /* ZNQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2768AEEF1D4BA85900C529A6 /* ZNQRCodeViewController.swift */; };
 		2768AF311D4C3E0800C529A6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2768AF301D4C3E0800C529A6 /* StringExtension.swift */; };
 		2768AF341D4C423400C529A6 /* ZNQRScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2768AF331D4C423400C529A6 /* ZNQRScanViewController.swift */; };
+		2768AF781D4C78C200C529A6 /* ZNSaveAsImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2768AF771D4C78C200C529A6 /* ZNSaveAsImageViewController.swift */; };
+		2768AFB61D4D795A00C529A6 /* ZNMessageInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2768AFB51D4D795A00C529A6 /* ZNMessageInfoView.swift */; };
 		276AD9231D47A82300E958CA /* ZNNewInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276AD9221D47A82300E958CA /* ZNNewInfoViewController.swift */; };
 		278E639F1D33DFA10096BAF7 /* ZNNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E639E1D33DFA10096BAF7 /* ZNNavigationController.swift */; };
 		278E63A31D33E77D0096BAF7 /* ZNInfoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E63A21D33E77D0096BAF7 /* ZNInfoListViewController.swift */; };
@@ -64,6 +66,8 @@
 		2768AEEF1D4BA85900C529A6 /* ZNQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNQRCodeViewController.swift; path = Class/newInfo/controller/ZNQRCodeViewController.swift; sourceTree = "<group>"; };
 		2768AF301D4C3E0800C529A6 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = support/StringExtension.swift; sourceTree = "<group>"; };
 		2768AF331D4C423400C529A6 /* ZNQRScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNQRScanViewController.swift; path = Class/QRScan/Controller/ZNQRScanViewController.swift; sourceTree = "<group>"; };
+		2768AF771D4C78C200C529A6 /* ZNSaveAsImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNSaveAsImageViewController.swift; path = Class/SaveAsImage/ZNSaveAsImageViewController.swift; sourceTree = "<group>"; };
+		2768AFB51D4D795A00C529A6 /* ZNMessageInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNMessageInfoView.swift; path = Class/SaveAsImage/ZNMessageInfoView.swift; sourceTree = "<group>"; };
 		276AD9221D47A82300E958CA /* ZNNewInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNNewInfoViewController.swift; path = Class/newInfo/controller/ZNNewInfoViewController.swift; sourceTree = "<group>"; };
 		278E639E1D33DFA10096BAF7 /* ZNNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNNavigationController.swift; path = Class/Main/Controller/ZNNavigationController.swift; sourceTree = "<group>"; };
 		278E63A21D33E77D0096BAF7 /* ZNInfoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNInfoListViewController.swift; path = Class/Main/Controller/ZNInfoListViewController.swift; sourceTree = "<group>"; };
@@ -117,8 +121,8 @@
 		27200F7D1D31426C00107D06 /* class */ = {
 			isa = PBXGroup;
 			children = (
+				2768AF731D4C761E00C529A6 /* Option */,
 				27200F881D31F7AB00107D06 /* support */,
-				2768AF321D4C41D600C529A6 /* QRScan */,
 				276AD91D1D47A74700E958CA /* newInfo */,
 				27200F7E1D3143BB00107D06 /* Main */,
 			);
@@ -180,7 +184,6 @@
 		2768AF321D4C41D600C529A6 /* QRScan */ = {
 			isa = PBXGroup;
 			children = (
-				2768AF361D4C424E00C529A6 /* View */,
 				2768AF351D4C424500C529A6 /* Controller */,
 			);
 			name = QRScan;
@@ -194,11 +197,22 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		2768AF361D4C424E00C529A6 /* View */ = {
+		2768AF731D4C761E00C529A6 /* Option */ = {
 			isa = PBXGroup;
 			children = (
+				2768AF741D4C763000C529A6 /* saveAsImage */,
+				2768AF321D4C41D600C529A6 /* QRScan */,
 			);
-			name = View;
+			name = Option;
+			sourceTree = "<group>";
+		};
+		2768AF741D4C763000C529A6 /* saveAsImage */ = {
+			isa = PBXGroup;
+			children = (
+				2768AF771D4C78C200C529A6 /* ZNSaveAsImageViewController.swift */,
+				2768AFB51D4D795A00C529A6 /* ZNMessageInfoView.swift */,
+			);
+			name = saveAsImage;
 			sourceTree = "<group>";
 		};
 		276AD91D1D47A74700E958CA /* newInfo */ = {
@@ -502,6 +516,7 @@
 				278E63A31D33E77D0096BAF7 /* ZNInfoListViewController.swift in Sources */,
 				27200F8E1D31F83600107D06 /* coreTabPage.swift in Sources */,
 				2768AF341D4C423400C529A6 /* ZNQRScanViewController.swift in Sources */,
+				2768AF781D4C78C200C529A6 /* ZNSaveAsImageViewController.swift in Sources */,
 				27200FCA1D3215CF00107D06 /* ZNLeftBarView.swift in Sources */,
 				278E63A51D33ECF60096BAF7 /* ZNTableViewCell.swift in Sources */,
 				2768AEF01D4BA85900C529A6 /* ZNQRCodeViewController.swift in Sources */,
@@ -510,6 +525,7 @@
 				27BFA5E61D32278000414EA4 /* ZNLeftListCell.swift in Sources */,
 				2768AF311D4C3E0800C529A6 /* StringExtension.swift in Sources */,
 				27200F8C1D31F82900107D06 /* UIViewAddition.swift in Sources */,
+				2768AFB61D4D795A00C529A6 /* ZNMessageInfoView.swift in Sources */,
 				27200FCC1D32221600107D06 /* ZNLeftBarContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
