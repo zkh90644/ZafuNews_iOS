@@ -29,6 +29,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ReactiveCocoa.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Result.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SnapKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,12 +62,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4D36C494E228F2112250FD22C136038C</key>
+		<key>59E840167CBCFC7E3BC779DD1164D2BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>54E9094A699FC84AC1C71F6C56608903</key>
+		<key>6F821A0DA2A9EAEF2F116A89D50BC719</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,7 +77,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ACD7A9D64A218CAF18EDA9E1CC3F0471</key>
+		<key>ACB6E8C5E4A84F1BF31A307D4F482C27</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B036AC5046A1B642D3944A695993B3ED</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B834171E775A21FFA847CD6F49E5A392</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,12 +97,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D0538F7F1471C3CB0333A96C62964CC1</key>
+		<key>DBA6001481CEA0EBA031CC5C94508FAA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DBA6001481CEA0EBA031CC5C94508FAA</key>
+		<key>FCE534592BB8B7784730BD653A5BF4E3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

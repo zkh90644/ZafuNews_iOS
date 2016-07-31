@@ -46,7 +46,7 @@ class ZNWeatherView: UIView {
     
     func getDate() -> NSString {
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "YYYY.MM.dd"
+        dateFormatter.dateFormat = "YYYY-MM-dd"
         let DateString = dateFormatter.stringFromDate(NSDate())
         
         return DateString
@@ -54,13 +54,13 @@ class ZNWeatherView: UIView {
     
     func setUpData() {
         //      设置文字
-        currentTem.text = "25"
+        currentTem.text = "nil"
         date.text = self.getDate() as String
-        position.text = "临安"
-        temInterval.text = "17℃/15℃"
-        weatherInterval.text = "阴-阴"
+        position.text = "nil"
+        temInterval.text = "nil"
+        weatherInterval.text = "AQI:000"
         tempSymbol.text = "℃"
-        weatherImageView.image = UIImage.init(named: "snow")
+        weatherImageView.image = UIImage.init(named: "sunny")
         let tempImage = UIImageView.init(image: UIImage.init(named: "refresh"))
         refresh.addSubview(tempImage)
         tempImage.snp_makeConstraints { (make) in

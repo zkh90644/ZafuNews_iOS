@@ -15,6 +15,16 @@ import SwiftyJSON
 let defaultColor = UIColor.init(red: 68/255.0, green: 138/255.0, blue: 255/255.0, alpha: 1)
 let key = "71bbf3830b814ff19f1698ae02b2dfe0"
 
+let webURLArray = ["http://news.zafu.edu.cn/articles/3/",
+                   "http://news.zafu.edu.cn/articles/75/",
+                   "http://news.zafu.edu.cn/articles/39/",
+                   "http://news.zafu.edu.cn/articles/53/",
+                   "http://news.zafu.edu.cn/articles/10/",
+                   "http://news.zafu.edu.cn/articles/54/",
+                   "http://news.zafu.edu.cn/articles/7/",
+                   "http://news.zafu.edu.cn/articles/59/",
+                   "http://news.zafu.edu.cn/articles/79/"]
+
 class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDelegate,CLLocationManagerDelegate{
 
     let navVC = ZNNavigationController.init()
@@ -36,7 +46,19 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
         initLeftBarView()
         
         self.leftBarView.leftView.weatherView.refresh.addTarget(self, action: #selector(updateWeather), forControlEvents: UIControlEvents.TouchUpInside)
+        for item in self.leftBarView.leftView.buttonArr {
+            let button = item as! ZNLeftListCell
+            if button.cellName == "关于我们" {
+                button.addTarget(self, action: #selector(aboutMe), forControlEvents: UIControlEvents.TouchUpInside)
+            }
+        }
         
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.sharedApplication().statusBarStyle = preferredStatusBarStyle()
     }
     
 //    MARK:界面设计
@@ -73,16 +95,42 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
     }
     
     func initMainVC() {
-        let vc1 = ZNInfoListViewController()
-        vc1.title = "联系我们"
-        let vc2 = ZNInfoListViewController()
-        vc2.title = "故障解答"
-        let vc3 = ZNInfoListViewController()
-        vc3.title = "经验交流"
         
-        self.vcArray.append(vc1)
-        self.vcArray.append(vc2)
-        self.vcArray.append(vc3)
+        for i in 0..<webURLArray.count {
+            let vc = ZNInfoListViewController(url:webURLArray[i])
+            self.vcArray.append(vc)
+            switch i {
+            case 0:
+                vc.title = "学校要闻"
+                break;
+            case 1:
+                vc.title = "综合新闻"
+                break;
+            case 2:
+                vc.title = "部门传真"
+                break;
+            case 3:
+                vc.title = "学院快讯"
+                break;
+            case 4:
+                vc.title = "创新创业"
+                break;
+            case 5:
+                vc.title = "学术动态"
+                break;
+            case 6:
+                vc.title = "师生风采"
+                break;
+            case 7:
+                vc.title = "媒体关注"
+                break;
+            case 8:
+                vc.title = "菁菁校园"
+                break;
+            default:
+                print("error")
+            }
+        }
         
         for item in self.vcArray {
             let tmp = item as! ZNInfoListViewController
@@ -113,7 +161,7 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
         let scanBarButton = UIBarButtonItem.init(customView: scanButton)
         
         let searchButton = getButton(UIImage.init(named: "search")!)
-        searchButton.addTarget(self, action: #selector(printWorld), forControlEvents: UIControlEvents.TouchUpInside)
+        searchButton.addTarget(self, action: #selector(pressSearchButton), forControlEvents: UIControlEvents.TouchUpInside)
         let searchBarButton = UIBarButtonItem.init(customView: searchButton)
         
         navVC.navigationBar.topItem?.rightBarButtonItems = [searchBarButton,scanBarButton]
@@ -128,6 +176,79 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
     func pushToQRScan() {
         let qrscanVC = ZNQRScanViewController()
         self.navVC.pushViewController(qrscanVC, animated: true)
+    }
+    
+    func pressSearchButton() {
+        let vc = ZNSearchViewController()
+        self.navVC.pushViewController(vc, animated: false)
+    }
+    
+    func getWeather(city:String) {
+        let url = "https://api.heweather.com/x3/weather?city="+city+"&key="+key
+        Alamofire.request(.GET, url.urlEncode()!).responseJSON { (response) in
+            switch response.result{
+            case .Success:
+                let json = JSON(data: response.data!)
+                let info = json["HeWeather data service 3.0"][0]
+                
+                let city = info["basic"]["city"]
+                let aqi = info["aqi"]["city"]["aqi"]
+                let tmp = info["now"]["tmp"]
+                let sky = info["now"]["cond"]["code"]
+                let max = info["daily_forecast"][0]["tmp"]["max"]
+                let min = info["daily_forecast"][0]["tmp"]["min"]
+                let date = info["daily_forecast"][0]["date"]
+                
+                let weatherURL = "http://files.heweather.com/cond_icon/"+sky.string!+".png"
+                
+                Alamofire.request(.GET, weatherURL).responseImage(completionHandler: { (response) in
+                    let image = UIImage.init(data: response.data!)
+                    let mainQueue = dispatch_get_main_queue()
+                    dispatch_async(mainQueue, {
+                        
+                        let view = self.leftBarView.leftView.weatherView
+                        
+                        UIView.animateWithDuration(0.5, animations: {
+                            view.date.alpha = 0
+                            view.currentTem.alpha = 0
+                            view.position.alpha = 0
+                            view.weatherImageView.alpha = 0
+                            view.weatherInterval.alpha = 0
+                            view.temInterval.alpha = 0
+                            view.tempSymbol.alpha = 0
+                            }, completion: { (finished) in
+                                if (finished) {
+                                    view.refresh.layer.removeAnimationForKey("rotate-layer")
+                                    view.date.text = date.string
+                                    view.currentTem.text = tmp.string
+                                    view.position.text = city.string
+                                    view.weatherInterval.text = "AQI:"+aqi.string!
+                                    view.temInterval.text = min.string! + "℃/"+max.string!+"℃"
+                                    view.weatherImageView.image = image?.imageReplaceColor(UIColor.whiteColor())
+                                    
+                                    UIView.animateWithDuration(0.5, animations: {
+                                        view.date.alpha = 1
+                                        view.currentTem.alpha = 1
+                                        view.position.alpha = 1
+                                        view.weatherImageView.alpha = 1
+                                        view.weatherInterval.alpha = 1
+                                        view.temInterval.alpha = 1
+                                        view.tempSymbol.alpha = 1
+                                    })
+                                }
+                        })
+                    })
+                })
+            case .Failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func aboutMe() {
+        let alertVC = UIAlertController.init(title: "About Me", message: "This App code by zkhCreator\nIf you have any problem about this App\nyou can send e-mail to zkh90644@gmail.com", preferredStyle: UIAlertControllerStyle.Alert)
+        alertVC.addAction(UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alertVC, animated: true, completion: nil)
     }
     
 //  MARK: corePageDelegate
@@ -219,68 +340,6 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
         manager.stopUpdatingLocation()
     }
     
-    func getWeather(city:String) {
-        let url = "https://api.heweather.com/x3/weather?city="+city+"&key="+key
-        Alamofire.request(.GET, url.urlEncode()!).responseJSON { (response) in
-            switch response.result{
-            case .Success:
-                let json = JSON(data: response.data!)
-                let info = json["HeWeather data service 3.0"][0]
-                
-                let city = info["basic"]["city"]
-                let aqi = info["aqi"]["city"]["aqi"]
-                let tmp = info["now"]["tmp"]
-                let sky = info["now"]["cond"]["code"]
-                let max = info["daily_forecast"][0]["tmp"]["max"]
-                let min = info["daily_forecast"][0]["tmp"]["min"]
-                let date = info["daily_forecast"][0]["date"]
-                
-                let weatherURL = "http://files.heweather.com/cond_icon/"+sky.string!+".png"
-                
-                Alamofire.request(.GET, weatherURL).responseImage(completionHandler: { (response) in
-                    let image = UIImage.init(data: response.data!)
-                    let mainQueue = dispatch_get_main_queue()
-                    dispatch_async(mainQueue, {
-                        
-                        let view = self.leftBarView.leftView.weatherView
-                        
-                        UIView.animateWithDuration(0.5, animations: {
-                            view.date.alpha = 0
-                            view.currentTem.alpha = 0
-                            view.position.alpha = 0
-                            view.weatherImageView.alpha = 0
-                            view.weatherInterval.alpha = 0
-                            view.temInterval.alpha = 0
-                            view.tempSymbol.alpha = 0
-                            }, completion: { (finished) in
-                                if (finished) {
-                                    view.refresh.layer.removeAnimationForKey("rotate-layer")
-                                    view.date.text = date.string
-                                    view.currentTem.text = tmp.string
-                                    view.position.text = city.string
-                                    view.weatherInterval.text = "AQI:"+aqi.string!
-                                    view.temInterval.text = min.string! + "℃/"+max.string!+"℃"
-                                    view.weatherImageView.image = image
-                                    
-                                    UIView.animateWithDuration(0.5, animations: {
-                                        view.date.alpha = 1
-                                        view.currentTem.alpha = 1
-                                        view.position.alpha = 1
-                                        view.weatherImageView.alpha = 1
-                                        view.weatherInterval.alpha = 1
-                                        view.temInterval.alpha = 1
-                                        view.tempSymbol.alpha = 1
-                                    })
-                                }
-                        })
-                    })
-                })
-            case .Failure(let error):
-                print(error)
-            }
-        }
-    }
-
     
 //  MARK: 界面设计需要用到的函数
     func getButton(image:UIImage) -> UIButton {
@@ -289,10 +348,6 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
         button.frame = CGRectMake(0, 0, 24, 24)
         
         return button
-    }
-    
-    func printWorld() {
-        print("helloworld")
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

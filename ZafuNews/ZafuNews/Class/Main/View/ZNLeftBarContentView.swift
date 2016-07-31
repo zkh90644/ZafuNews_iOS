@@ -15,6 +15,7 @@ class ZNLeftBarContentView: UIView {
     
     var weatherView = ZNWeatherView()
     var itemListView = UIScrollView()
+    var buttonArr = Array<UIButton>()
     
 
     override init(frame: CGRect) {
@@ -51,8 +52,9 @@ class ZNLeftBarContentView: UIView {
         //添加到list
         for (key,value) in ListDic {
             let button = ZNLeftListCell.init(image: UIImage.init(named: key)!, name: value)
+            self.buttonArr.append(button)
             itemListView.addSubview(button)
-        
+            
             if (key,value) == ListDic.first! {
                 button.snp_makeConstraints(closure: { (make) in
                     make.height.equalTo(itemListView).multipliedBy(0.1)
@@ -68,6 +70,5 @@ class ZNLeftBarContentView: UIView {
             
             lastButton = button
         }
-        
     }
 }

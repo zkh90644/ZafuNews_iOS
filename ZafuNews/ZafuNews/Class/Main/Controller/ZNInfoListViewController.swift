@@ -27,9 +27,9 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    convenience init(){
+    convenience init(url:String){
         self.init(nibName: nil, bundle: nil)
-        self.listModel = ZNListModel.init(baseURL: "http://news.zafu.edu.cn", url: "http://news.zafu.edu.cn/articles/3/?page=4")
+        self.listModel = ZNListModel.init(baseURL: "http://news.zafu.edu.cn", url:url)
     }
     
     required init?(coder aDecoder: NSCoder) {
