@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ZNSearchListViewController: UITableViewController,callbackListViewProtocol {
+class ZNSearchListViewController: UITableViewController,callbackListViewProtocol,UINavigationControllerDelegate {
 
     var listModel:ZNSearchListModel?
     var url:String
@@ -88,5 +88,4 @@ class ZNSearchListViewController: UITableViewController,callbackListViewProtocol
     func finishLoadListView() {
         self.tableView.reloadData()
     }
-
 }

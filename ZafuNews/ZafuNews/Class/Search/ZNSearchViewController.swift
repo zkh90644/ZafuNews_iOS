@@ -9,38 +9,23 @@
 import UIKit
 import ReactiveCocoa
 
-class ZNSearchViewController: UIViewController {
+class ZNSearchViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var cancel: UIButton!
     
     @IBOutlet weak var textInput: UITextField!
     @IBOutlet var tapBackground: UITapGestureRecognizer!
     
-    @IBOutlet weak var search: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.search.hidden = true
-        
         self.cancel.addTarget(self, action: #selector(pressCancel), forControlEvents: UIControlEvents.TouchUpInside)
-        
-        self.search.addTarget(self, action: #selector(pressSearch), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.tapBackground.addTarget(self, action: #selector(tapBackgroundAction))
         
-        textInput.rac_textSignal().subscribeNext { (string) in
-            
-            if string as! String != ""{
-                self.cancel.hidden = true
-                self.search.hidden = false
-                
-            }else{
-                self.cancel.hidden = false
-                self.search.hidden = true
-            
-            }
-        }
+        self.textInput.keyboardType = UIKeyboardType.WebSearch
+        self.textInput.enablesReturnKeyAutomatically = true
+        self.textInput.delegate = self
         
         
     }
@@ -80,4 +65,11 @@ class ZNSearchViewController: UIViewController {
         }
     }
 
+//    键盘delegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.pressSearch()
+        
+        return true
+    }
+    
 }
