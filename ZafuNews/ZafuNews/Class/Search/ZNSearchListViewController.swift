@@ -1,23 +1,16 @@
 //
-//  ZNInfoListViewController.swift
+//  ZNSearchListViewController.swift
 //  ZafuNews
 //
-//  Created by zkhCreator on 7/11/16.
+//  Created by zkhCreator on 8/1/16.
 //  Copyright © 2016 zkhCreator. All rights reserved.
 //
 
 import UIKit
 
-protocol pushToInfoNewDelegate {
-    func pushToNextViewController(title:String,url:String)
-}
+class ZNSearchListViewController: UITableViewController,callbackListViewProtocol {
 
-class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
-    
-    var delegate:pushToInfoNewDelegate?
-
-    let ZNTableCell = UITableViewCell.init(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
-    var listModel:ZNListModel?
+    var listModel:ZNSearchListModel?
     var url:String
     var infoArr = Array<(url:String,title:String)>()
     
@@ -29,7 +22,8 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
     
     convenience init(url:String){
         self.init(nibName: nil, bundle: nil)
-        self.listModel = ZNListModel.init(baseURL: "http://news.zafu.edu.cn", url:url)
+        self.listModel = ZNSearchListModel.init(baseURL: "http://news.zafu.edu.cn", url:url)
+        self.title = "搜索"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,43 +32,42 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 10
         
         listModel?.delegate = self
+
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return (listModel?.listArray.count)!
     }
-
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("cell")
         
         if (cell == nil) {
-            cell = ZNTableViewCell.init(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
+            cell = ZNSearchListTableViewCell.init(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
         }
         
-        let tmpCell = cell as! ZNTableViewCell
+        let tmpCell = cell as! ZNSearchListTableViewCell
         tmpCell.title.numberOfLines = 2
         
         if listModel?.listArray.count != 0 {
-            let cellText:(title:String,url:String,date:String,num:String) = (listModel?.listArray[indexPath.row])!
+            let cellText:(title:String,url:String,date:String) = (listModel?.listArray[indexPath.row])!
             
             tmpCell.title.text = cellText.title
-                
+            
             tmpCell.date.text = cellText.date
-            tmpCell.number.text = cellText.num
             tmpCell.url = cellText.url
             
             infoArr.append((cellText.url,cellText.title))
@@ -86,13 +79,14 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let info = infoArr[indexPath.row]
+        let vc = ZNNewInfoViewController.init(searchURL: info.url)
         
-        self.delegate?.pushToNextViewController(info.title,url: info.url)
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
-    
-    //MARK:Delegate
     func finishLoadListView() {
         self.tableView.reloadData()
     }
+
 }

@@ -53,6 +53,12 @@ class ZNSearchViewController: UIViewController {
         UIApplication.sharedApplication().statusBarStyle = .Default
         
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        super.viewWillDisappear(animated)
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+    }
 
     func pressCancel() {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
@@ -60,7 +66,10 @@ class ZNSearchViewController: UIViewController {
     }
     
     func pressSearch() {
-        print(self.textInput.text)
+        let url = "http://news.zafu.edu.cn/search/?keyword=" + self.textInput.text!
+        let vc = ZNSearchListViewController.init(url: url)
+        
+        self.navigationController?.pushViewController(vc, animated: false)
     }
 
     func tapBackgroundAction() {

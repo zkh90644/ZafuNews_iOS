@@ -66,7 +66,11 @@ class ZNListModel{
                     
                     //              解析点击数
                     let numArr = numStr?.componentsSeparatedByString("点 击 率：")
-                    num = numArr![1]
+                    if numArr?.count > 1{
+                        num = numArr![1]
+                    }else{
+                        num = numArr![0]
+                    }
                     
                     //              解析日期
                     if dates != nil {
