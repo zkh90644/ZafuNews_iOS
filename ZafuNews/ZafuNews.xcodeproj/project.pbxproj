@@ -13,6 +13,11 @@
 		27200F8E1D31F83600107D06 /* coreTabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200F8D1D31F83600107D06 /* coreTabPage.swift */; };
 		27200FCA1D3215CF00107D06 /* ZNLeftBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200FC91D3215CF00107D06 /* ZNLeftBarView.swift */; };
 		27200FCC1D32221600107D06 /* ZNLeftBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200FCB1D32221600107D06 /* ZNLeftBarContentView.swift */; };
+		2726244D1D50EB01002176A9 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2726244C1D50EB01002176A9 /* libicucore.tbd */; };
+		2726244F1D50EB08002176A9 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2726244E1D50EB08002176A9 /* libz.tbd */; };
+		272624511D50EB10002176A9 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 272624501D50EB10002176A9 /* libstdc++.tbd */; };
+		272624531D50EB1B002176A9 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272624521D50EB1B002176A9 /* ImageIO.framework */; };
+		272624551D50EB25002176A9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 272624541D50EB25002176A9 /* libsqlite3.tbd */; };
 		2767EC4F1D49F56100FBC14E /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2767EC4E1D49F56100FBC14E /* Regex.swift */; };
 		2767EC531D4A0AD000FBC14E /* ZNMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2767EC521D4A0AD000FBC14E /* ZNMessageViewModel.swift */; };
 		2767EC551D4AD17500FBC14E /* ZNListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2767EC541D4AD17500FBC14E /* ZNListModel.swift */; };
@@ -66,6 +71,12 @@
 		27200F8D1D31F83600107D06 /* coreTabPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = coreTabPage.swift; path = Class/Main/View/coreTabPage.swift; sourceTree = "<group>"; };
 		27200FC91D3215CF00107D06 /* ZNLeftBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNLeftBarView.swift; path = Class/Main/View/ZNLeftBarView.swift; sourceTree = "<group>"; };
 		27200FCB1D32221600107D06 /* ZNLeftBarContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNLeftBarContentView.swift; path = Class/Main/View/ZNLeftBarContentView.swift; sourceTree = "<group>"; };
+		2726244C1D50EB01002176A9 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		2726244E1D50EB08002176A9 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		272624501D50EB10002176A9 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		272624521D50EB1B002176A9 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		272624541D50EB25002176A9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		272624561D50EB87002176A9 /* ShareSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ShareSDK-Bridging-Header.h"; path = "support/ShareSDK-Bridging-Header.h"; sourceTree = "<group>"; };
 		2767EC4E1D49F56100FBC14E /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Regex.swift; path = support/Regex.swift; sourceTree = "<group>"; };
 		2767EC521D4A0AD000FBC14E /* ZNMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNMessageViewModel.swift; path = Class/newInfo/model/ZNMessageViewModel.swift; sourceTree = "<group>"; };
 		2767EC541D4AD17500FBC14E /* ZNListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNListModel.swift; path = Class/Main/Model/ZNListModel.swift; sourceTree = "<group>"; };
@@ -109,6 +120,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				272624551D50EB25002176A9 /* libsqlite3.tbd in Frameworks */,
+				272624531D50EB1B002176A9 /* ImageIO.framework in Frameworks */,
+				272624511D50EB10002176A9 /* libstdc++.tbd in Frameworks */,
+				2726244F1D50EB08002176A9 /* libz.tbd in Frameworks */,
+				2726244D1D50EB01002176A9 /* libicucore.tbd in Frameworks */,
 				FE6DFCABBA0C96F700D16D4A /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				27FC637B1D31387E00A6C112 /* AppDelegate.swift */,
+				272624561D50EB87002176A9 /* ShareSDK-Bridging-Header.h */,
 				27200F8B1D31F82900107D06 /* UIViewAddition.swift */,
 				2767EC4E1D49F56100FBC14E /* Regex.swift */,
 				2768AF301D4C3E0800C529A6 /* StringExtension.swift */,
@@ -356,6 +373,11 @@
 		9E953AAB41B89C167D8BD925 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				272624541D50EB25002176A9 /* libsqlite3.tbd */,
+				272624521D50EB1B002176A9 /* ImageIO.framework */,
+				272624501D50EB10002176A9 /* libstdc++.tbd */,
+				2726244E1D50EB08002176A9 /* libz.tbd */,
+				2726244C1D50EB01002176A9 /* libicucore.tbd */,
 				A975EBC74746D7C49A3059F7 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -721,6 +743,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mike.ZafuNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ZafuNews/support/ShareSDK-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -733,6 +756,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mike.ZafuNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ZafuNews/support/ShareSDK-Bridging-Header.h";
 			};
 			name = Release;
 		};

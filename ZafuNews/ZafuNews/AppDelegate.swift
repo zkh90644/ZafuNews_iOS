@@ -8,6 +8,8 @@
 
 import UIKit
 
+let APPKEY = "1593827671498"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +18,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+//        shareSDK第三方库
+        ShareSDK.registerApp(APPKEY, activePlatforms: nil, onImport: {(platform : SSDKPlatformType) -> Void in
+            
+            switch platform{
+                
+            case SSDKPlatformType.TypeWechat:
+                ShareSDKConnector.connectWeChat(WXApi.classForCoder())
+                
+            case SSDKPlatformType.TypeQQ:
+                ShareSDKConnector.connectQQ(QQApiInterface.classForCoder(), tencentOAuthClass: TencentOAuth.classForCoder())
+            default:
+                break
+            }
+        }, onConfiguration: nil)
+        
+//        创建VC
         window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = UIColor.init(red: 68/255.0, green: 138/255.0, blue: 255/255.0, alpha: 1)
@@ -25,6 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = basicVC
         
         return true
+        
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {
