@@ -60,7 +60,7 @@ class ZNNewInfoViewController: UIViewController {
         
 //        addAction
         self.alertView.qrCode.addTarget(self, action: #selector(clickQRButton), forControlEvents: UIControlEvents.TouchUpInside)
-        self.alertView.picture.addTarget(self, action: #selector(pushToImage), forControlEvents: UIControlEvents.TouchUpInside)
+        self.alertView.picture.addTarget(self, action: #selector(saveAsImage), forControlEvents: UIControlEvents.TouchUpInside)
         
     }
     
@@ -79,15 +79,50 @@ class ZNNewInfoViewController: UIViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func pushToImage() {
-//        var infoHeight = messageViewModel.contentSize
-//        for item in messageViewModel.viewArray {
-//            print(item.frame)
-//        }
-//        
-//        let vc = ZNSaveAsImageViewController.init(viewArr: messageViewModel.viewArray,frames:infoHeight)
-//        self.navigationController?.pushViewController(vc, animated: true)
-    }
+    func saveAsImage() {
+        let BasicViewHeight = self.messageViewModel.basicView.frame.height
+        let BasicViewWidth = self.view.width * 1
+        UIGraphicsBeginImageContext(CGSizeMake(BasicViewWidth, BasicViewHeight))
+        
+        var drawPointY:CGFloat = 10
+        
+        for view in messageViewModel.viewArray {
+            if view.isKindOfClass(UILabel) {
+                let image = (view as! UILabel).convertToImage()
+                let left = (BasicViewWidth - image.size.width) / 2
+                image.drawAtPoint(CGPointMake(left, drawPointY))
+                drawPointY += image.size.height
+                drawPointY += 10
+            }else if view.isKindOfClass(UIImageView){
+                let image = (view as! UIImageView).image
+                
+                if image != nil {
+                    let left = (BasicViewWidth - image!.size.width) / 2
+                    
+                    image?.drawAtPoint(CGPointMake(left, drawPointY))
+                    drawPointY += (image?.size.height)!
+                    drawPointY += 10
 
+                }
+            }
+        }
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(ZNNewInfoViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    func image(image:UIImage,didFinishSavingWithError error:NSError?,contextInfo:UnsafePointer<Void>) {
+        if error == nil {
+            let alertVC = UIAlertController.init(title: "提醒", message: "已经成功保存", preferredStyle: UIAlertControllerStyle.Alert)
+            alertVC.addAction(UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alertVC, animated: true, completion: nil)
+        }else{
+            let alertVC = UIAlertController.init(title: "提醒", message: "保存失败", preferredStyle: UIAlertControllerStyle.Alert)
+            alertVC.addAction(UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alertVC, animated: true, completion: nil)
+        }
+    }
 
 }
