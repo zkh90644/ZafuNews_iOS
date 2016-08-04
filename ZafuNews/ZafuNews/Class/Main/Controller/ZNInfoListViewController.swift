@@ -35,7 +35,7 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
         
         self.tableView.es_addPullToRefresh {
             [weak self] in
-            self?.listModel = ZNListModel.init(baseURL: "http://news.zafu.edu.cn", url: url,callback:{
+            self?.listModel?.reloadData({
                 self?.tableView.es_stopPullToRefresh(completion: true)
             })
         }
@@ -43,7 +43,7 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
         self.tableView.es_addInfiniteScrolling { 
             [weak self] in
             
-            self?.listModel?.addNewInfo({ 
+            self?.listModel?.addNewInfo({
                 self?.tableView.es_stopLoadingMore()
             })
             
@@ -111,6 +111,20 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
     
     //MARK:Delegate
     func finishLoadListView() {
-        self.tableView.reloadData()
+//        if self.tableView.numberOfRowsInSection(0) < listModel?.listArray.count {
+//            let startCount = self.tableView.numberOfRowsInSection(0)
+//            let endCount = listModel?.listArray.count
+//            
+//            var indexPathArr:Array<NSIndexPath> = []
+//            
+//            for row in startCount ..< endCount! {
+//                indexPathArr.append(NSIndexPath.init(forRow: row, inSection: 0))
+//            }
+//            
+//            self.tableView.insertRowsAtIndexPaths(indexPathArr, withRowAnimation: UITableViewRowAnimation.Top)
+////            self.tableView.reloadRowsAtIndexPaths(indexPathArr, withRowAnimation: UITableViewRowAnimation.Bottom)
+//        }else{
+            self.tableView.reloadData()
+//        }
     }
 }

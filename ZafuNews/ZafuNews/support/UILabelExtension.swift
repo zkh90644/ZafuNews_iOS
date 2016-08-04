@@ -6,7 +6,7 @@
 //  Copyright © 2016 zkhCreator. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension UILabel{
     func convertToImage() -> UIImage {

@@ -41,7 +41,6 @@ class ZNQRScanViewController: UIViewController {
         }
         
         if flag == true {
-            print(url)
             let vc = ZNNewInfoViewController.init(searchURL: url)
             self.navigationController?.pushViewController(vc, animated: true)
         }else{

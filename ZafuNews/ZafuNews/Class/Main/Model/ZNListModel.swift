@@ -28,11 +28,11 @@ class ZNListModel{
         self.baseURL = baseURL
         self.url = url
         self.listArray = Array<(String,String,String,String)>()
-        let q = dispatch_queue_create("async_queue", DISPATCH_QUEUE_SERIAL)
-        
-        dispatch_async(q) {
+//        let q = dispatch_queue_create("async_queue", DISPATCH_QUEUE_SERIAL)
+//        
+//        dispatch_async(q) {
             self.getMessage(url, callback: callback)
-        }
+//        }
     }
     
     convenience init(baseURL:String,url:String){
@@ -45,8 +45,16 @@ class ZNListModel{
         let q = dispatch_queue_create("async_queue", DISPATCH_QUEUE_SERIAL)
         let url:String = self.url!+"?page=\(currentPage)"
         
-        dispatch_async(q) { 
+        dispatch_sync(q) { 
             self.getMessage(url, callback: callback)
+        }
+    }
+    
+    func reloadData(callback:(()->())?) {
+        self.listArray = Array<(String,String,String,String)>()
+        let q = dispatch_queue_create("sync_queue", DISPATCH_QUEUE_SERIAL)
+        dispatch_async(q) {
+            self.getMessage(self.url!, callback: callback)
         }
     }
     
@@ -98,7 +106,11 @@ class ZNListModel{
                 if numArr?.count > 1{
                     num = numArr![1]
                 }else{
-                    num = numArr![0]
+                    if numArr == nil {
+                        num = "0"
+                    }else{
+                        num = numArr![0]
+                    }
                 }
                 
                 //              解析日期
@@ -111,15 +123,13 @@ class ZNListModel{
                 self.listArray.append((title,urlStr,date,num))
             }
             
-            print(listArray.count)
-            
             let mainQueue = dispatch_get_main_queue()
             
             dispatch_async(mainQueue, {
-                self.delegate?.finishLoadListView()
                 if callback != nil{
                     callback!()
                 }
+                self.delegate?.finishLoadListView()
             })
         }
     }
