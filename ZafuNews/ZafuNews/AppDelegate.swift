@@ -18,21 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-//        shareSDK第三方库
-        ShareSDK.registerApp(APPKEY, activePlatforms: nil, onImport: {(platform : SSDKPlatformType) -> Void in
-            
-            switch platform{
-                
-            case SSDKPlatformType.TypeWechat:
-                ShareSDKConnector.connectWeChat(WXApi.classForCoder())
-                
-            case SSDKPlatformType.TypeQQ:
-                ShareSDKConnector.connectQQ(QQApiInterface.classForCoder(), tencentOAuthClass: TencentOAuth.classForCoder())
-            default:
-                break
-            }
-        }, onConfiguration: nil)
-        
 //        创建VC
         window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
         window?.makeKeyAndVisible()

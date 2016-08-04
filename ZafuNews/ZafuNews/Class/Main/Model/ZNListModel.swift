@@ -9,6 +9,8 @@
 import UIKit
 import Ji
 
+
+
 protocol callbackListViewProtocol {
     func finishLoadListView()
 }
@@ -17,77 +19,108 @@ class ZNListModel{
 //    从左到右分别是，title，url，日期，点击数
     var listArray = Array<(String,String,String,String)>()
     var delegate:callbackListViewProtocol?
+    var currentPage = 1
+    var baseURL:String?
+    var url:String?
     
-    init(baseURL:String,url:String) {
+    init(baseURL:String,url:String,callback:(()->())?) {
+        currentPage = 1
+        self.baseURL = baseURL
+        self.url = url
+        self.listArray = Array<(String,String,String,String)>()
         let q = dispatch_queue_create("async_queue", DISPATCH_QUEUE_SERIAL)
         
         dispatch_async(q) {
-            let JiCode = Ji.init(htmlURL: NSURL(string: url)!)
-            
-            let content = JiCode?.xPath("//div[starts-with(@class,'content-right')]/ul/li/a")
-            let dates = JiCode?.xPath("//div[starts-with(@class,'content-right')]/ul/li/span")
-            
-            if content != nil {
-                for item in content! {
-                    
-                    var title = ""
-                    var num = ""
-                    var date = ""
-                    var urlStr = ""
-                    
-                    let titleStr = item.content?.componentsSeparatedByString("\n            ")
-                    let tempStr = item["href"]
-                    let numStr = item["title"]
-                    
-                    //              解析标题
-                    if titleStr !=  nil {
-                        for item in titleStr! {
-                            if item != "" && item != " " {
-                                title.appendContentsOf(item)
-                            }
+            self.getMessage(url, callback: callback)
+        }
+    }
+    
+    convenience init(baseURL:String,url:String){
+        self.init(baseURL:baseURL,url:url,callback: nil)
+    }
+    
+    func addNewInfo(callback:(()->())?) {
+        currentPage += 1;
+        
+        let q = dispatch_queue_create("async_queue", DISPATCH_QUEUE_SERIAL)
+        let url:String = self.url!+"?page=\(currentPage)"
+        
+        dispatch_async(q) { 
+            self.getMessage(url, callback: callback)
+        }
+    }
+    
+    func getMessage(url:String,callback:(()->())?) {
+        let JiCode = Ji.init(htmlURL: NSURL(string: url)!)
+        
+        let content = JiCode?.xPath("//div[starts-with(@class,'content-right')]/ul/li/a")
+        let dates = JiCode?.xPath("//div[starts-with(@class,'content-right')]/ul/li/span")
+        
+        if content != nil {
+            for item in content! {
+                
+                var title = ""
+                var num = ""
+                var date = ""
+                var urlStr = ""
+                
+                let titleStr = item.content?.componentsSeparatedByString("\n            ")
+                let tempStr = item["href"]
+                let numStr = item["title"]
+                
+                //              解析标题
+                if titleStr !=  nil {
+                    for item in titleStr! {
+                        if item != "" && item != " " {
+                            title.appendContentsOf(item)
                         }
+                    }
                     //              继续解析，删去图保留后面的内容
-                        var tempTitleArr = title.componentsSeparatedByString("    ")
-                        title = tempTitleArr[1]
-                    }
-                    
-                    //              删去图字
-                    let titleArr = title.componentsSeparatedByString("[图]")
-                    if (titleArr.count == 1){
-                        title = titleArr[0]
-                    }else{
-                        title = titleArr[1]
-                    }
-                    
-                    //              解析URL
-                    if tempStr != nil {
-                        urlStr = baseURL + tempStr!
-                    }
-                    
-                    //              解析点击数
-                    let numArr = numStr?.componentsSeparatedByString("点 击 率：")
-                    if numArr?.count > 1{
-                        num = numArr![1]
-                    }else{
-                        num = numArr![0]
-                    }
-                    
-                    //              解析日期
-                    if dates != nil {
-                        let index = content?.indexOf(item)
-                        date = dates![index!].content!
-                    }
-                    
-                    //            将对应的顺序放入Array中
-                    self.listArray.append((title,urlStr,date,num))
-                    
-                    let mainQueue = dispatch_get_main_queue()
-                    
-                    dispatch_async(mainQueue, { 
-                        self.delegate?.finishLoadListView()
-                    })
+                    var tempTitleArr = title.componentsSeparatedByString("    ")
+                    title = tempTitleArr[1]
                 }
+                
+                //              删去图字
+                let titleArr = title.componentsSeparatedByString("[图]")
+                if (titleArr.count == 1){
+                    title = titleArr[0]
+                }else{
+                    title = titleArr[1]
+                }
+                
+                //              解析URL
+                if tempStr != nil {
+                    urlStr = baseURL! + tempStr!
+                }
+                
+                //              解析点击数
+                let numArr = numStr?.componentsSeparatedByString("点 击 率：")
+                if numArr?.count > 1{
+                    num = numArr![1]
+                }else{
+                    num = numArr![0]
+                }
+                
+                //              解析日期
+                if dates != nil {
+                    let index = content?.indexOf(item)
+                    date = dates![index!].content!
+                }
+                
+                //            将对应的顺序放入Array中
+                self.listArray.append((title,urlStr,date,num))
             }
+            
+            print(listArray.count)
+            
+            let mainQueue = dispatch_get_main_queue()
+            
+            dispatch_async(mainQueue, {
+                self.delegate?.finishLoadListView()
+                if callback != nil{
+                    callback!()
+                }
+            })
         }
     }
 }

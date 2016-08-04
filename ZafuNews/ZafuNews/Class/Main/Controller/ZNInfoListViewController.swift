@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ESPullToRefresh
 
 protocol pushToInfoNewDelegate {
     func pushToNextViewController(title:String,url:String)
@@ -25,11 +26,28 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
         self.listModel = nil
         self.url = ""
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        
     }
     
     convenience init(url:String){
         self.init(nibName: nil, bundle: nil)
         self.listModel = ZNListModel.init(baseURL: "http://news.zafu.edu.cn", url:url)
+        
+        self.tableView.es_addPullToRefresh {
+            [weak self] in
+            self?.listModel = ZNListModel.init(baseURL: "http://news.zafu.edu.cn", url: url,callback:{
+                self?.tableView.es_stopPullToRefresh(completion: true)
+            })
+        }
+        
+        self.tableView.es_addInfiniteScrolling { 
+            [weak self] in
+            
+            self?.listModel?.addNewInfo({ 
+                self?.tableView.es_stopLoadingMore()
+            })
+            
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
