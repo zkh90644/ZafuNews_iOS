@@ -202,9 +202,40 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
                 let weatherURL = "http://files.heweather.com/cond_icon/"+sky.string!+".png"
                 
                 Alamofire.request(.GET, weatherURL).responseImage(completionHandler: { (response) in
-                    let image = UIImage.init(data: response.data!)
+                    let image = UIImage.init(data: response.data!)?.imageReplaceColor(UIColor.whiteColor())
                     let mainQueue = dispatch_get_main_queue()
                     dispatch_async(mainQueue, {
+                        
+                        var path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first
+                        path?.appendContentsOf("/weather.plist")
+                        
+                        let manager = NSFileManager.defaultManager()
+                        
+                        if !(manager.fileExistsAtPath(path!)){
+                            if manager.createFileAtPath(path!, contents: nil, attributes: nil) == true {
+                                print("create success")
+                            }else{
+                                print("create false")
+                            }
+                            
+                        }
+
+                        let dic = NSMutableDictionary.init(capacity: 6)
+                        dic.setValue(tmp.string, forKey: "tmp")
+                        dic.setValue(city.string, forKey: "position")
+                        dic.setValue(aqi.string, forKey: "AQI")
+                        dic.setValue(min.string! + "℃/"+max.string!+"℃", forKey: "minToMax")
+                        dic.setValue(date.string, forKey: "date")
+                        dic.setValue(UIImagePNGRepresentation(image!), forKey: "weather")
+                        
+                        print(dic)
+                        
+                        if (dic.writeToFile(path!, atomically: true) == true){
+                            print("true")
+                        }else{
+                            print(false)
+                        }
+//                        dic?.writeToFile(path!, atomically: true)
                         
                         let view = self.leftBarView.leftView.weatherView
                         
@@ -224,7 +255,7 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
                                     view.position.text = city.string
                                     view.weatherInterval.text = "AQI:"+aqi.string!
                                     view.temInterval.text = min.string! + "℃/"+max.string!+"℃"
-                                    view.weatherImageView.image = image?.imageReplaceColor(UIColor.whiteColor())
+                                    view.weatherImageView.image = image
                                     
                                     UIView.animateWithDuration(0.5, animations: {
                                         view.date.alpha = 1

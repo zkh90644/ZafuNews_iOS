@@ -27,8 +27,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = basicVC
         
-        return true
+//        获取本地存储的天气
+        var path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first
+        path?.appendContentsOf("/weather.plist")
         
+        let manager = NSFileManager.defaultManager()
+        if manager.fileExistsAtPath(path!) {
+            //        获得天气
+            let weatherDic = NSDictionary.init(contentsOfFile: path!)
+            
+            let weatherView = basicVC.leftBarView.leftView.weatherView
+            weatherView.date.text = (weatherDic!["date"] as! String)
+            weatherView.currentTem.text = (weatherDic!["tmp"] as! String)
+            weatherView.position.text = (weatherDic!["position"] as! String)
+            weatherView.weatherInterval.text = "AQI:"+(weatherDic!["AQI"] as! String)
+            weatherView.weatherImageView.image = UIImage.init(data: weatherDic!["weather"] as! NSData)
+            weatherView.temInterval.text = (weatherDic!["minToMax"] as! String)
+        }else{
+            let weatherView = basicVC.leftBarView.leftView.weatherView
+            weatherView.date.text = "0"
+            weatherView.currentTem.text = "0"
+            weatherView.position.text = "您还没获取呐"
+            weatherView.weatherInterval.text = "AQI:0"
+            weatherView.weatherImageView.image = UIImage.init(named: "sunny")
+            weatherView.temInterval.text = "0"
+        }
+        
+        
+        return true
         
     }
 
