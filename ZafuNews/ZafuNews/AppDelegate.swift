@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import SQLite
 
 let APPKEY = "1593827671498"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    var db:Connection?
     var window: UIWindow?
 
 
@@ -53,6 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             weatherView.temInterval.text = "0"
         }
         
+//        连接数据库
+        var sqlitePath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first
+        sqlitePath?.appendContentsOf("/db.sqlite3")
+        
+        db = try! Connection(sqlitePath!)
         
         return true
         

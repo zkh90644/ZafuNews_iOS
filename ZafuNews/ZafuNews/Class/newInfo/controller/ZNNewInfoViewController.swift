@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SQLite
 
 class ZNNewInfoViewController: UIViewController {
 
@@ -61,6 +62,7 @@ class ZNNewInfoViewController: UIViewController {
 //        addAction
         self.alertView.qrCode.addTarget(self, action: #selector(clickQRButton), forControlEvents: UIControlEvents.TouchUpInside)
         self.alertView.picture.addTarget(self, action: #selector(saveAsImage), forControlEvents: UIControlEvents.TouchUpInside)
+        self.alertView.save.addTarget(self, action: #selector(myFavorite), forControlEvents: UIControlEvents.TouchUpInside)
         
     }
     
@@ -120,6 +122,32 @@ class ZNNewInfoViewController: UIViewController {
             self.presentViewController(alertVC, animated: true, completion: nil)
         }else{
             let alertVC = UIAlertController.init(title: "提醒", message: "保存失败", preferredStyle: UIAlertControllerStyle.Alert)
+            alertVC.addAction(UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alertVC, animated: true, completion: nil)
+        }
+    }
+    
+    func myFavorite() {
+        let db = (UIApplication.sharedApplication().delegate as! AppDelegate).db
+        
+        let table = Table("favorite")
+        let title = Expression<String>("title")
+        let url = Expression<String>("url")
+        
+        if self.title == nil {
+            self.title = "无标题"
+        }
+        
+        let count = try db?.scalar(table.filter(url == self.url).count)
+        if count == 0 {
+            try! db?.run(table.insert(title <- self.title!,url <- self.url))
+            let alertVC = UIAlertController.init(title: "提醒", message: "您已经收藏了这篇文章", preferredStyle: UIAlertControllerStyle.Alert)
+            alertVC.addAction(UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alertVC, animated: true, completion: nil)
+        }else{
+            let deleteFilter = table.filter(url == self.url)
+            try! db?.run(deleteFilter.delete())
+            let alertVC = UIAlertController.init(title: "提醒", message: "您取消收藏了这篇文章", preferredStyle: UIAlertControllerStyle.Alert)
             alertVC.addAction(UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alertVC, animated: true, completion: nil)
         }

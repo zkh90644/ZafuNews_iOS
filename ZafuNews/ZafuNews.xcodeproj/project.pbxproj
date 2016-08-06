@@ -33,7 +33,7 @@
 		27A8355E1D49D9A30027E77E /* ZNMessageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A8355D1D49D9A30027E77E /* ZNMessageInfo.swift */; };
 		27BFA5E61D32278000414EA4 /* ZNLeftListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BFA5E51D32278000414EA4 /* ZNLeftListCell.swift */; };
 		27BFA5E81D32387500414EA4 /* ZNWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BFA5E71D32387500414EA4 /* ZNWeatherView.swift */; };
-		27E79C6F1D54706C00E34AEF /* weather.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27E79C6E1D54706C00E34AEF /* weather.plist */; };
+		27E79C751D557C2600E34AEF /* ZNFavoriteListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E79C741D557C2600E34AEF /* ZNFavoriteListTableViewController.swift */; };
 		27FC637C1D31387E00A6C112 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC637B1D31387E00A6C112 /* AppDelegate.swift */; };
 		27FC63831D31387E00A6C112 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27FC63821D31387E00A6C112 /* Assets.xcassets */; };
 		27FC63861D31387E00A6C112 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27FC63841D31387E00A6C112 /* LaunchScreen.storyboard */; };
@@ -89,10 +89,9 @@
 		278E63A21D33E77D0096BAF7 /* ZNInfoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNInfoListViewController.swift; path = Class/Main/Controller/ZNInfoListViewController.swift; sourceTree = "<group>"; };
 		278E63A41D33ECF60096BAF7 /* ZNTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNTableViewCell.swift; path = Class/Main/View/ZNTableViewCell.swift; sourceTree = "<group>"; };
 		27A8355D1D49D9A30027E77E /* ZNMessageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNMessageInfo.swift; path = Class/newInfo/model/ZNMessageInfo.swift; sourceTree = "<group>"; };
-		27A8355F1D49DBF50027E77E /* Ji.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Ji.framework; path = "/Users/Mike/Library/Developer/Xcode/DerivedData/ZafuNews-bahosfgzgjbpzrcsumltpiznzqnd/Build/Products/Debug-iphonesimulator/Ji.framework"; sourceTree = "<absolute>"; };
 		27BFA5E51D32278000414EA4 /* ZNLeftListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNLeftListCell.swift; path = Class/Main/View/ZNLeftListCell.swift; sourceTree = "<group>"; };
 		27BFA5E71D32387500414EA4 /* ZNWeatherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNWeatherView.swift; path = Class/Main/View/ZNWeatherView.swift; sourceTree = "<group>"; };
-		27E79C6E1D54706C00E34AEF /* weather.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = weather.plist; path = Data/weather.plist; sourceTree = "<group>"; };
+		27E79C741D557C2600E34AEF /* ZNFavoriteListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNFavoriteListTableViewController.swift; path = Class/Main/Controller/ZNFavoriteListTableViewController.swift; sourceTree = "<group>"; };
 		27FC63781D31387E00A6C112 /* ZafuNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZafuNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27FC637B1D31387E00A6C112 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27FC63821D31387E00A6C112 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,6 +161,7 @@
 				278E63A21D33E77D0096BAF7 /* ZNInfoListViewController.swift */,
 				27200F861D31466500107D06 /* ZNMainViewController.swift */,
 				278E639E1D33DFA10096BAF7 /* ZNNavigationController.swift */,
+				27E79C741D557C2600E34AEF /* ZNFavoriteListTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -297,18 +297,9 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		27E79C6D1D54704200E34AEF /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				27E79C6E1D54706C00E34AEF /* weather.plist */,
-			);
-			name = Data;
-			sourceTree = "<group>";
-		};
 		27FC636F1D31387E00A6C112 = {
 			isa = PBXGroup;
 			children = (
-				27A8355F1D49DBF50027E77E /* Ji.framework */,
 				27FC637A1D31387E00A6C112 /* ZafuNews */,
 				27FC638F1D31387E00A6C112 /* ZafuNewsTests */,
 				27FC639A1D31387E00A6C112 /* ZafuNewsUITests */,
@@ -331,7 +322,6 @@
 		27FC637A1D31387E00A6C112 /* ZafuNews */ = {
 			isa = PBXGroup;
 			children = (
-				27E79C6D1D54704200E34AEF /* Data */,
 				27200F7D1D31426C00107D06 /* class */,
 				27FC63821D31387E00A6C112 /* Assets.xcassets */,
 				27FC63841D31387E00A6C112 /* LaunchScreen.storyboard */,
@@ -494,7 +484,6 @@
 				27FC63861D31387E00A6C112 /* LaunchScreen.storyboard in Resources */,
 				2768B0351D4E467900C529A6 /* ZNSearchViewController.xib in Resources */,
 				27FC63831D31387E00A6C112 /* Assets.xcassets in Resources */,
-				27E79C6F1D54706C00E34AEF /* weather.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +579,7 @@
 				2767EC531D4A0AD000FBC14E /* ZNMessageViewModel.swift in Sources */,
 				27BFA5E61D32278000414EA4 /* ZNLeftListCell.swift in Sources */,
 				2768AF311D4C3E0800C529A6 /* StringExtension.swift in Sources */,
+				27E79C751D557C2600E34AEF /* ZNFavoriteListTableViewController.swift in Sources */,
 				2768B0371D4ECDB000C529A6 /* ZNSearchListModel.swift in Sources */,
 				27200F8C1D31F82900107D06 /* UIViewAddition.swift in Sources */,
 				27200FCC1D32221600107D06 /* ZNLeftBarContentView.swift in Sources */,

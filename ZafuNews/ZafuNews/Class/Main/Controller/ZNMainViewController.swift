@@ -51,6 +51,9 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
             if button.cellName == "关于我们" {
                 button.addTarget(self, action: #selector(aboutMe), forControlEvents: UIControlEvents.TouchUpInside)
             }
+            if button.cellName == "我的收藏" {
+                button.addTarget(self, action: #selector(pushToFavorite), forControlEvents: UIControlEvents.TouchUpInside)
+            }
         }
         
         
@@ -280,6 +283,13 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
         let alertVC = UIAlertController.init(title: "About Me", message: "This App code by zkhCreator\nIf you have any problem about this App\nyou can send e-mail to zkh90644@gmail.com", preferredStyle: UIAlertControllerStyle.Alert)
         alertVC.addAction(UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alertVC, animated: true, completion: nil)
+    }
+    
+    func pushToFavorite() {
+        let vc = ZNFavoriteListTableViewController()
+        self.leftBarView.HideView()
+        
+        self.navVC.pushViewController(vc, animated: true)
     }
     
 //  MARK: corePageDelegate

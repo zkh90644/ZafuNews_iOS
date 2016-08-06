@@ -1,4 +1,5 @@
 pod 'SnapKit'
+pod 'SQLite.swift', '~> 0.10.1'
 pod 'Alamofire'
 pod 'MBProgressHUD'
 pod 'SwiftyJSON'

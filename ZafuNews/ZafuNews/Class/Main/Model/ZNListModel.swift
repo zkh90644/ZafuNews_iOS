@@ -121,16 +121,17 @@ class ZNListModel{
                 
                 //            将对应的顺序放入Array中
                 self.listArray.append((title,urlStr,date,num))
+                
+                
+                let mainQueue = dispatch_get_main_queue()
+                
+                dispatch_async(mainQueue, {
+                    if callback != nil{
+                        callback!()
+                    }
+                    self.delegate?.finishLoadListView()
+                })
             }
-            
-            let mainQueue = dispatch_get_main_queue()
-            
-            dispatch_async(mainQueue, {
-                if callback != nil{
-                    callback!()
-                }
-                self.delegate?.finishLoadListView()
-            })
         }
     }
 }
