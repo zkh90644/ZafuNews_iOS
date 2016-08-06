@@ -10,7 +10,7 @@ import UIKit
 import ESPullToRefresh
 
 protocol pushToInfoNewDelegate {
-    func pushToNextViewController(title:String,url:String)
+    func pushToNextViewController(title:String,url:String,category:String)
 }
 
 class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
@@ -21,6 +21,7 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
     var listModel:ZNListModel?
     var url:String
     var infoArr = Array<(url:String,title:String)>()
+    let db = (UIApplication.sharedApplication().delegate as! AppDelegate).db
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         self.listModel = nil
@@ -31,6 +32,7 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
     
     convenience init(url:String){
         self.init(nibName: nil, bundle: nil)
+        
         self.listModel = ZNListModel.init(baseURL: "http://news.zafu.edu.cn", url:url)
         
         self.tableView.es_addPullToRefresh {
@@ -66,12 +68,10 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return (listModel?.listArray.count)!
     }
 
@@ -105,7 +105,7 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
         
         let info = infoArr[indexPath.row]
         
-        self.delegate?.pushToNextViewController(info.title,url: info.url)
+        self.delegate?.pushToNextViewController(info.title,url: info.url,category: self.title!)
     }
     
     

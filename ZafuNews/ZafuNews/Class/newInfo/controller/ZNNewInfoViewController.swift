@@ -14,6 +14,7 @@ class ZNNewInfoViewController: UIViewController {
     let alertView = ZNPopView()
     var messageViewModel = ZNMessageViewModel()
     var url = ""
+    var category = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +26,15 @@ class ZNNewInfoViewController: UIViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    convenience init(searchURL: String){
+    convenience init(searchURL: String,category:String){
         self.init(nibName: nil, bundle: nil)
         self.url = searchURL
         self.messageViewModel = ZNMessageViewModel(baseURL: "http://news.zafu.edu.cn",searchURL: searchURL)
+        self.category = category
+    }
+    
+    convenience init(searchURL:String){
+        self.init(searchURL:searchURL,category: "无分类")
     }
     
     required init?(coder aDecoder: NSCoder) {

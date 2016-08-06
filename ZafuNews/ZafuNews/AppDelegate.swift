@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //        获得天气
             let weatherDic = NSDictionary.init(contentsOfFile: path!)
             
-            let weatherView = basicVC.leftBarView.leftView.weatherView
+            let weatherView = basicVC.leftBarVC.leftBarView.leftView.weatherView
             weatherView.date.text = (weatherDic!["date"] as! String)
             weatherView.currentTem.text = (weatherDic!["tmp"] as! String)
             weatherView.position.text = (weatherDic!["position"] as! String)
@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             weatherView.weatherImageView.image = UIImage.init(data: weatherDic!["weather"] as! NSData)
             weatherView.temInterval.text = (weatherDic!["minToMax"] as! String)
         }else{
-            let weatherView = basicVC.leftBarView.leftView.weatherView
+            let weatherView = basicVC.leftBarVC.leftBarView.leftView.weatherView
             weatherView.date.text = "0"
             weatherView.currentTem.text = "0"
             weatherView.position.text = "您还没获取呐"
@@ -61,8 +61,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         db = try! Connection(sqlitePath!)
         
-        return true
+        let cacheTable = Table("cache")
+        let id = Expression<Int64>("id")
+        let title = Expression<String>("title")
+        let url = Expression<String>("url")
+        let count = Expression<String>("count")
+        let date = Expression<String>("date")
+        let content = Expression<Blob>("content")
         
+        try! db?.run(cacheTable.create(ifNotExists: true, block: { (t) in
+            t.column(id, primaryKey: .Autoincrement)
+            t.column(title)
+            t.column(url)
+            t.column(count)
+            t.column(date)
+            t.column(content)
+        }))
+        
+        return true
     }
 
     func applicationWillResignActive(application: UIApplication) {

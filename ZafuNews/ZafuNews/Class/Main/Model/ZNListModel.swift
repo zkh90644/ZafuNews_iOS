@@ -28,11 +28,11 @@ class ZNListModel{
         self.baseURL = baseURL
         self.url = url
         self.listArray = Array<(String,String,String,String)>()
-//        let q = dispatch_queue_create("async_queue", DISPATCH_QUEUE_SERIAL)
-//        
-//        dispatch_async(q) {
+        let q = dispatch_queue_create("async_queue", DISPATCH_QUEUE_SERIAL)
+        
+        dispatch_async(q) {
             self.getMessage(url, callback: callback)
-//        }
+        }
     }
     
     convenience init(baseURL:String,url:String){
