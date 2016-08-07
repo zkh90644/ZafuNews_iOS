@@ -14,7 +14,8 @@ class ZNNewInfoViewController: UIViewController {
     let alertView = ZNPopView()
     var messageViewModel = ZNMessageViewModel()
     var url = ""
-    var category = ""
+    
+    let db = (UIApplication.sharedApplication().delegate as! AppDelegate).db
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +27,26 @@ class ZNNewInfoViewController: UIViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    convenience init(searchURL: String,category:String){
+    convenience init(searchURL: String){
         self.init(nibName: nil, bundle: nil)
+        
+        //        判断是否在数据库中有内容存在,如果有则从数据库中获取。
+        let cacheTable = Table("cache")
+        let tempURL = Expression<String>("url")
+        let content = Expression<Blob>("content")
+        
+        let result = self.db?.pluck(cacheTable.filter(tempURL == searchURL).select(content))
+        
         self.url = searchURL
-        self.messageViewModel = ZNMessageViewModel(baseURL: "http://news.zafu.edu.cn",searchURL: searchURL)
-        self.category = category
-    }
-    
-    convenience init(searchURL:String){
-        self.init(searchURL:searchURL,category: "无分类")
+        
+        let data = NSData.fromDatatypeValue((result![content]))
+        let arr = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? Array<UIView>
+        
+        if arr?.count != 0 {
+            self.messageViewModel = ZNMessageViewModel.init(viewArray:arr,searchURL: searchURL)
+        }else{
+            self.messageViewModel = ZNMessageViewModel(baseURL: "http://news.zafu.edu.cn",searchURL: searchURL)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -134,7 +146,6 @@ class ZNNewInfoViewController: UIViewController {
     }
     
     func myFavorite() {
-        let db = (UIApplication.sharedApplication().delegate as! AppDelegate).db
         
         let table = Table("favorite")
         let title = Expression<String>("title")

@@ -8,9 +8,10 @@
 
 import UIKit
 import ESPullToRefresh
+import SQLite
 
 protocol pushToInfoNewDelegate {
-    func pushToNextViewController(title:String,url:String,category:String)
+    func pushToNextViewController(title:String,url:String)
 }
 
 class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
@@ -20,7 +21,7 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
     let ZNTableCell = UITableViewCell.init(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
     var listModel:ZNListModel?
     var url:String
-    var infoArr = Array<(url:String,title:String)>()
+    var infoArr = Array<(url:String,title:String,count:String)>()
     let db = (UIApplication.sharedApplication().delegate as! AppDelegate).db
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -30,10 +31,56 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
         
     }
     
+    convenience init(url:String,title:String){
+        self.init(nibName: nil, bundle: nil)
+        
+        self.url = url
+        self.title = title
+        
+        let cacheTable = Table("cache")
+        let title = Expression<String>("title")
+        let urlString = Expression<String>("url")
+        let count = Expression<String>("count")
+        let date = Expression<String>("date")
+        let category = Expression<String>("category")
+
+        //        将result组合成array
+        let result = try! self.db?.prepare(cacheTable.filter(category == self.title!))
+        let countNum = try! self.db?.scalar(cacheTable.filter(category == self.title!).count)
+        
+        if countNum > 0 {
+            //        将选出的内容放置到数组中去
+            var arr = Array<(String,String,String,String)>()
+            for item in result! {
+                arr.append((item[title],item[urlString],item[date],item[count]))
+            }
+            self.listModel = ZNListModel.init(url: url, listArray: arr)
+            
+        }else{
+            self.listModel = ZNListModel.init(url:url)
+        }
+        
+        self.tableView.es_addPullToRefresh {
+            [weak self] in
+            self?.listModel?.reloadData({
+                self?.tableView.es_stopPullToRefresh(completion: true)
+            })
+        }
+        
+        self.tableView.es_addInfiniteScrolling {
+            [weak self] in
+            
+            self?.listModel?.addNewInfo({
+                self?.tableView.es_stopLoadingMore()
+            })
+            
+        }
+    }
+    
     convenience init(url:String){
         self.init(nibName: nil, bundle: nil)
         
-        self.listModel = ZNListModel.init(baseURL: "http://news.zafu.edu.cn", url:url)
+        self.listModel = ZNListModel.init(url:url)
         
         self.tableView.es_addPullToRefresh {
             [weak self] in
@@ -95,7 +142,7 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
             tmpCell.number.text = cellText.num
             tmpCell.url = cellText.url
             
-            infoArr.append((cellText.url,cellText.title))
+            infoArr.append((cellText.url,cellText.title,count:cellText.num))
         }
         return tmpCell
     }
@@ -105,7 +152,7 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
         
         let info = infoArr[indexPath.row]
         
-        self.delegate?.pushToNextViewController(info.title,url: info.url,category: self.title!)
+        self.delegate?.pushToNextViewController(info.title,url: info.url)
     }
     
     
@@ -126,5 +173,36 @@ class ZNInfoListViewController: UITableViewController,callbackListViewProtocol {
 //        }else{
             self.tableView.reloadData()
 //        }
+        self.addValueToDB()
     }
+    
+    func addValueToDB() {
+        let queue = dispatch_queue_create("asyncQueue", DISPATCH_QUEUE_SERIAL)
+        let cacheTable = Table("cache")
+        let url = Expression<String>("url")
+        let title = Expression<String>("title")
+        let count = Expression<String>("count")
+        let date = Expression<String>("date")
+        let category = Expression<String>("category")
+        let content = Expression<Blob>("content")
+        
+        dispatch_async(queue) {
+            for item in (self.listModel?.listArray)!{
+                let tempItem = item as (String,String,String,String)
+                //    从左到右分别是，title，url，日期，点击数
+
+                let countNum = self.db?.scalar(cacheTable.filter(url == tempItem.1).count)
+                let emptyArray = Array<UIView>()
+                let data = NSKeyedArchiver.archivedDataWithRootObject(emptyArray)
+                let blob = data.datatypeValue
+                
+                if countNum == 0{
+                    try! self.db?.run(cacheTable.insert([title<-tempItem.0,url<-tempItem.1,date<-tempItem.2,count<-item.3,category<-self.title!,content<-blob]))
+                }else{
+                    try! self.db?.run(cacheTable.filter(url == tempItem.1).update([count<-item.3]))
+                }
+            }
+        }
+    }
+    
 }

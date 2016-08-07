@@ -145,8 +145,6 @@ class ZNLeftBarViewController: UIViewController,CLLocationManagerDelegate {
                         dic.setValue(date.string, forKey: "date")
                         dic.setValue(UIImagePNGRepresentation(image!), forKey: "weather")
                         
-                        print(dic)
-                        
                         if (dic.writeToFile(path!, atomically: true) == true){
                             print("true")
                         }else{

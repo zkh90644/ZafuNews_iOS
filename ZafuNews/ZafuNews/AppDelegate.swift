@@ -20,6 +20,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        //        连接数据库
+        var sqlitePath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first
+        sqlitePath?.appendContentsOf("/db.sqlite3")
+        
+        db = try! Connection(sqlitePath!)
+        
+        let cacheTable = Table("cache")
+        let id = Expression<Int64>("id")
+        let title = Expression<String>("title")
+        let url = Expression<String>("url")
+        let count = Expression<String>("count")
+        let date = Expression<String>("date")
+        let content = Expression<Blob>("content")
+        let category = Expression<String>("category")
+        
+        try! db?.run(cacheTable.create(ifNotExists: true, block: { (t) in
+            t.column(id, primaryKey: .Autoincrement)
+            t.column(title)
+            t.column(url)
+            t.column(count)
+            t.column(date)
+            t.column(content)
+            t.column(category)
+        }))
+        
 //        创建VC
         window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
         window?.makeKeyAndVisible()
@@ -54,29 +79,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             weatherView.weatherImageView.image = UIImage.init(named: "sunny")
             weatherView.temInterval.text = "0"
         }
-        
-//        连接数据库
-        var sqlitePath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first
-        sqlitePath?.appendContentsOf("/db.sqlite3")
-        
-        db = try! Connection(sqlitePath!)
-        
-        let cacheTable = Table("cache")
-        let id = Expression<Int64>("id")
-        let title = Expression<String>("title")
-        let url = Expression<String>("url")
-        let count = Expression<String>("count")
-        let date = Expression<String>("date")
-        let content = Expression<Blob>("content")
-        
-        try! db?.run(cacheTable.create(ifNotExists: true, block: { (t) in
-            t.column(id, primaryKey: .Autoincrement)
-            t.column(title)
-            t.column(url)
-            t.column(count)
-            t.column(date)
-            t.column(content)
-        }))
         
         return true
     }

@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import Alamofire
 import SwiftyJSON
+import SQLite
 
 let defaultColor = UIColor.init(red: 68/255.0, green: 138/255.0, blue: 255/255.0, alpha: 1)
 let key = "71bbf3830b814ff19f1698ae02b2dfe0"
@@ -92,8 +93,7 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
         
         for item in arr! {
             let dic = item as! NSDictionary
-            let vc = ZNInfoListViewController(url: (dic["URL"] as! String))
-            vc.title = dic["title"] as? String
+            let vc = ZNInfoListViewController(url: (dic["URL"] as! String),title:dic["title"] as! String)
             self.vcArray.append(vc)
         }
         
@@ -179,8 +179,9 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
     }
     
 //  MARK:跳转界面代理
-    func pushToNextViewController(title: String,url:String,category:String) {
-        let nextVC = ZNNewInfoViewController(searchURL: url,category:category)
+    func pushToNextViewController(title: String,url:String) {
+        
+        let nextVC = ZNNewInfoViewController(searchURL: url)
         nextVC.title = title
         self.navVC.pushViewController(nextVC, animated: true)
     }

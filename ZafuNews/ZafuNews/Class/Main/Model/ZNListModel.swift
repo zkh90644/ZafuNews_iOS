@@ -20,12 +20,15 @@ class ZNListModel{
     var listArray = Array<(String,String,String,String)>()
     var delegate:callbackListViewProtocol?
     var currentPage = 1
-    var baseURL:String?
+    var baseURL:String = "http://news.zafu.edu.cn"
     var url:String?
     
-    init(baseURL:String,url:String,callback:(()->())?) {
-        currentPage = 1
-        self.baseURL = baseURL
+    init(){
+        
+    }
+    
+    convenience init(url:String,callback:(()->())?) {
+        self.init()
         self.url = url
         self.listArray = Array<(String,String,String,String)>()
         let q = dispatch_queue_create("async_queue", DISPATCH_QUEUE_SERIAL)
@@ -35,8 +38,14 @@ class ZNListModel{
         }
     }
     
-    convenience init(baseURL:String,url:String){
-        self.init(baseURL:baseURL,url:url,callback: nil)
+    convenience init(url:String){
+        self.init(url:url,callback: nil)
+    }
+    
+    convenience init(url:String,listArray:Array<(String,String,String,String)>){
+        self.init()
+        self.url = url
+        self.listArray = listArray
     }
     
     func addNewInfo(callback:(()->())?) {
@@ -98,7 +107,7 @@ class ZNListModel{
                 
                 //              解析URL
                 if tempStr != nil {
-                    urlStr = baseURL! + tempStr!
+                    urlStr = baseURL + tempStr!
                 }
                 
                 //              解析点击数
@@ -121,17 +130,18 @@ class ZNListModel{
                 
                 //            将对应的顺序放入Array中
                 self.listArray.append((title,urlStr,date,num))
-                
-                
-                let mainQueue = dispatch_get_main_queue()
-                
-                dispatch_async(mainQueue, {
-                    if callback != nil{
-                        callback!()
-                    }
-                    self.delegate?.finishLoadListView()
-                })
             }
+            
+            
+            let mainQueue = dispatch_get_main_queue()
+            
+            dispatch_async(mainQueue, {
+                if callback != nil{
+                    callback!()
+                }
+                self.delegate?.finishLoadListView()
+            })
+
         }
     }
 }
