@@ -25,6 +25,8 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
     
     lazy var vcArray:Array<UIViewController> = Array<UIViewController>()
     
+    let db = (UIApplication.sharedApplication().delegate as! AppDelegate).db
+    
 //  MARK:生命周期
     
     override func viewDidLoad() {
@@ -43,9 +45,10 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
             if button.cellName == "我的收藏" {
                 button.addTarget(self, action: #selector(pushToFavorite), forControlEvents: UIControlEvents.TouchUpInside)
             }
+            if button.cellName == "清除缓存" {
+                button.addTarget(self, action: #selector(deleteCache), forControlEvents: UIControlEvents.TouchUpInside)
+            }
         }
-        
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -159,6 +162,22 @@ class ZNMainViewController: UIViewController,coreTabViewDelegate,pushToInfoNewDe
         self.leftBarVC.leftBarView.HideView()
         
         self.navVC.pushViewController(vc, animated: true)
+    }
+    
+    func deleteCache() {
+        let alertVC = UIAlertController.init(title: "警告", message: "您是否真的要清楚缓存", preferredStyle: UIAlertControllerStyle.Alert)
+        alertVC.addAction(UIAlertAction.init(title: "是", style: UIAlertActionStyle.Default, handler: { (t) in
+            let cacheTable = Table("cache")
+            try! self.db!.run(cacheTable.delete())
+            let DeleteCurrent = UIAlertController.init(title: "提醒", message: "缓存已经清除", preferredStyle: UIAlertControllerStyle.Alert)
+            DeleteCurrent.addAction(UIAlertAction.init(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(DeleteCurrent, animated: true, completion: nil)
+        }))
+        
+        alertVC.addAction(UIAlertAction.init(title: "否", style: UIAlertActionStyle.Cancel, handler: nil))
+        
+        self.presentViewController(alertVC, animated: true, completion: nil)
+        
     }
     
 //  MARK: corePageDelegate
