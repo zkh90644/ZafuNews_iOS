@@ -102,5 +102,15 @@ class ZNFavoriteListTableViewController: UITableViewController {
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
         
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let info = array[indexPath.row]
+        
+        let nextVC = ZNNewInfoViewController(searchURL: info.1)
+        nextVC.title = info.0
+        self.navigationController!.pushViewController(nextVC, animated: true)
+    }
 
 }
