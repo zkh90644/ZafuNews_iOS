@@ -28,6 +28,16 @@ class ZNFavoriteListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        MobClick.beginLogPageView("favorite")
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        MobClick.endLogPageView("favorite")
+    }
+    
     func connectToDB() {
         let table = Table("favorite")
         let id = Expression<Int64>("id")

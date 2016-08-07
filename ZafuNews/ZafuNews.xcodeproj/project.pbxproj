@@ -36,6 +36,8 @@
 		27E79C8B1D55EE6600E34AEF /* ZNLeftBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E79C861D55EE6600E34AEF /* ZNLeftBarView.swift */; };
 		27E79C8C1D55EE6600E34AEF /* ZNLeftListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E79C871D55EE6600E34AEF /* ZNLeftListCell.swift */; };
 		27E79C8D1D55EE6600E34AEF /* ZNWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E79C881D55EE6600E34AEF /* ZNWeatherView.swift */; };
+		27E79C941D5709EC00E34AEF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2726244E1D50EB08002176A9 /* libz.tbd */; };
+		27E79C951D5709FA00E34AEF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 272624541D50EB25002176A9 /* libsqlite3.tbd */; };
 		27FC637C1D31387E00A6C112 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC637B1D31387E00A6C112 /* AppDelegate.swift */; };
 		27FC63831D31387E00A6C112 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27FC63821D31387E00A6C112 /* Assets.xcassets */; };
 		27FC63861D31387E00A6C112 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27FC63841D31387E00A6C112 /* LaunchScreen.storyboard */; };
@@ -64,6 +66,7 @@
 /* Begin PBXFileReference section */
 		27026E401D487C0B00D270F5 /* ZNPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNPopView.swift; path = Class/newInfo/View/ZNPopView.swift; sourceTree = "<group>"; };
 		2706D18A1D51E77500A57B78 /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UILabelExtension.swift; path = support/UILabelExtension.swift; sourceTree = "<group>"; };
+		2708AAD81D57288200F3A1D6 /* bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
 		27200F861D31466500107D06 /* ZNMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZNMainViewController.swift; path = Class/Main/Controller/ZNMainViewController.swift; sourceTree = "<group>"; };
 		27200F8B1D31F82900107D06 /* UIViewAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewAddition.swift; path = support/UIViewAddition.swift; sourceTree = "<group>"; };
 		27200F8D1D31F83600107D06 /* coreTabPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = coreTabPage.swift; path = Class/Main/View/coreTabPage.swift; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 		27E79C861D55EE6600E34AEF /* ZNLeftBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZNLeftBarView.swift; sourceTree = "<group>"; };
 		27E79C871D55EE6600E34AEF /* ZNLeftListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZNLeftListCell.swift; sourceTree = "<group>"; };
 		27E79C881D55EE6600E34AEF /* ZNWeatherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZNWeatherView.swift; sourceTree = "<group>"; };
+		27E79C921D5709CB00E34AEF /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		27FC63781D31387E00A6C112 /* ZafuNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZafuNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27FC637B1D31387E00A6C112 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27FC63821D31387E00A6C112 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27E79C941D5709EC00E34AEF /* libz.tbd in Frameworks */,
+				27E79C951D5709FA00E34AEF /* libsqlite3.tbd in Frameworks */,
 				FE6DFCABBA0C96F700D16D4A /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				27FC637B1D31387E00A6C112 /* AppDelegate.swift */,
+				2708AAD81D57288200F3A1D6 /* bridge.h */,
 				27200F8B1D31F82900107D06 /* UIViewAddition.swift */,
 				2767EC4E1D49F56100FBC14E /* Regex.swift */,
 				2768AF301D4C3E0800C529A6 /* StringExtension.swift */,
@@ -390,6 +397,7 @@
 		9E953AAB41B89C167D8BD925 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27E79C921D5709CB00E34AEF /* CoreTelephony.framework */,
 				272624541D50EB25002176A9 /* libsqlite3.tbd */,
 				272624521D50EB1B002176A9 /* ImageIO.framework */,
 				272624501D50EB10002176A9 /* libstdc++.tbd */,
@@ -758,11 +766,15 @@
 			baseConfigurationReference = 98E8821A2FD00AC4263EBF46 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ZafuNews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mike.ZafuNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = ZafuNews/bridge.h;
 			};
 			name = Debug;
 		};
@@ -771,11 +783,15 @@
 			baseConfigurationReference = 36537C57BDD13CEF65237AEA /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ZafuNews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mike.ZafuNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = ZafuNews/bridge.h;
 			};
 			name = Release;
 		};

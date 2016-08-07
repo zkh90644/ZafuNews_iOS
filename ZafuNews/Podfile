@@ -6,7 +6,7 @@ pod 'SwiftyJSON'
 pod 'Ji'
 pod 'AlamofireImage'
 pod 'SwiftQRCode'
-pod 'ReactiveCocoa'
 pod "ESPullToRefresh"
+pod 'UMengAnalytics-NO-IDFA'
 
 use_frameworks!

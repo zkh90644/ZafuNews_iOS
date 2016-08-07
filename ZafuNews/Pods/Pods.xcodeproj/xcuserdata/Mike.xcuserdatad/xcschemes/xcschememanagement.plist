@@ -34,16 +34,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ReactiveCocoa.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Result.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SQLite.swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -72,17 +62,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0F1CD383B73C092E443AD86A050B243D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>20FBEF4557BA793E98E190CD1B44AA98</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>3E6BE26A9C676D1DEF18F57C6F2DE025</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>646F6F12D3B921BE377F53C89CE47AE9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>65E100122B5359E359DC617AD1CDFB94</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>696F5D2AD0D76AF031692228528DBF44</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,17 +87,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>97AADB5539DFD0A94E1D22C4FBB1A936</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>ABF60856B965878CC0A3DCF0B124E65F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B9BE8C3481C5ED7585920292A2F6A13A</key>
+		<key>7E45A759F2D6F402B8487992A43801DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,17 +97,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C915DD68CC2F442DDF587B74098C6E61</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>DBA6001481CEA0EBA031CC5C94508FAA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DC1C5B7684BE1FC6874409F4EB32D5A2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E753A77EB642EBBC3B5C348B5C5C725B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -19,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+//        集成友盟第三方SDK
+        let UMConfigInstance = UMAnalyticsConfig.init()
+        UMConfigInstance.appKey = "57a6d10b67e58e020e00239f"
+        
+        MobClick.startWithConfigure(UMConfigInstance)
         
         //        连接数据库
         var sqlitePath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first
