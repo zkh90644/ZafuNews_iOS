@@ -14,6 +14,7 @@ PODS:
   - SwiftQRCode (2.0.2)
   - SwiftyJSON (2.3.2)
   - UMengAnalytics-NO-IDFA (4.1.1)
+  - UMengSocialCOM (5.2.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - SwiftQRCode
   - SwiftyJSON
   - UMengAnalytics-NO-IDFA
+  - UMengSocialCOM (~> 5.2.1)
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
@@ -38,5 +40,6 @@ SPEC CHECKSUMS:
   SwiftQRCode: 68e920781686e376d70646b90c8ad87fd6523309
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   UMengAnalytics-NO-IDFA: 1064992c1b7aaa22823179c0b33a664813fd7a85
+  UMengSocialCOM: 074c135ce349aa4c8848d3fb8458757bcb6ffb67
 
 COCOAPODS: 0.39.0

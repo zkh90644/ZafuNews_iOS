@@ -20,7 +20,7 @@ class ZNPopView: UIView {
         
         share = self.setButton(UIImage.init(named: "Share")!, title: "分享")
         qrCode = self.setButton(UIImage.init(named: "QCCode")!, title: "生成二维码")
-        save = self.setButton(UIImage.init(named: "saveLocation")!, title: "保存到本地")
+        save = self.setButton(UIImage.init(named: "saveLocation")!, title: "收藏")
         picture = self.setButton(UIImage.init(named: "Out")!, title:"导出成图片")
         
         self.addSubview(qrCode)

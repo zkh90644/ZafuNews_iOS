@@ -8,5 +8,7 @@ pod 'AlamofireImage'
 pod 'SwiftQRCode'
 pod "ESPullToRefresh"
 pod 'UMengAnalytics-NO-IDFA'
+pod 'UMengSocialCOM', '~> 5.2.1'
+
 
 use_frameworks!

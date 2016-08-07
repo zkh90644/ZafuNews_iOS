@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UMConfigInstance.appKey = "57a6d10b67e58e020e00239f"
         
         MobClick.startWithConfigure(UMConfigInstance)
+        UMSocialData.setAppKey("57a6d10b67e58e020e00239f")
+//        友盟分享SDK
+        UMSocialTumblrHandler.openTumblr()
         
         //        连接数据库
         var sqlitePath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first
@@ -31,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         db = try! Connection(sqlitePath!)
         
+//        创建缓存数据库
         let cacheTable = Table("cache")
         let id = Expression<Int64>("id")
         let title = Expression<String>("title")
@@ -48,6 +52,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             t.column(date)
             t.column(content)
             t.column(category)
+        }))
+        
+//        创建本地收藏数据库
+        let favorite = Table("favorite")
+        try! db?.run(favorite.create(ifNotExists: true, block: { (t) in
+            t.column(id, primaryKey: .Autoincrement)
+            t.column(title)
+            t.column(url)
         }))
         
 //        创建VC

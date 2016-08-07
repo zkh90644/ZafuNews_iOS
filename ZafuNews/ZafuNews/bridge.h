@@ -10,6 +10,7 @@
 #define bridge_h
 
 #import "UMMobClick/MobClick.h"
-//#import "UMSocialTumblrHandler.h"
+#import "UMSocial.h"
+#import "UMSocialTumblrHandler.h"
 
 #endif /* bridge_h */

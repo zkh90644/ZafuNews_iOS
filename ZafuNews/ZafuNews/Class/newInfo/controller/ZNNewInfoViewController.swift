@@ -9,7 +9,7 @@
 import UIKit
 import SQLite
 
-class ZNNewInfoViewController: UIViewController {
+class ZNNewInfoViewController: UIViewController,UMSocialUIDelegate {
 
     let alertView = ZNPopView()
     var messageViewModel = ZNMessageViewModel()
@@ -47,6 +47,9 @@ class ZNNewInfoViewController: UIViewController {
         }else{
             self.messageViewModel = ZNMessageViewModel(baseURL: "http://news.zafu.edu.cn",searchURL: searchURL)
         }
+        
+        let TouchGesture = UITapGestureRecognizer.init(target: self, action: #selector(hidePopView))
+        self.messageViewModel.addGestureRecognizer(TouchGesture)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -81,11 +84,16 @@ class ZNNewInfoViewController: UIViewController {
         self.alertView.qrCode.addTarget(self, action: #selector(clickQRButton), forControlEvents: UIControlEvents.TouchUpInside)
         self.alertView.picture.addTarget(self, action: #selector(saveAsImage), forControlEvents: UIControlEvents.TouchUpInside)
         self.alertView.save.addTarget(self, action: #selector(myFavorite), forControlEvents: UIControlEvents.TouchUpInside)
+        self.alertView.share.addTarget(self, action: #selector(shareSDK), forControlEvents: UIControlEvents.TouchUpInside)
         
     }
     
     func showAndHidePopView() {
         alertView.hidden = !alertView.hidden
+    }
+    
+    func hidePopView() {
+        alertView.hidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,11 +103,17 @@ class ZNNewInfoViewController: UIViewController {
 
     //    popButtonAction
     func clickQRButton() {
+        self.hidePopView()
         let viewController = ZNQRCodeViewController.init(title: self.title!, url: self.url)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func saveAsImage() {
+        self.hidePopView()
+        UIImageWriteToSavedPhotosAlbum(getInfoImage(), self, #selector(ZNNewInfoViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    func getInfoImage() -> UIImage {
         let BasicViewHeight = self.messageViewModel.basicView.frame.height
         let BasicViewWidth = self.view.width * 1
         UIGraphicsBeginImageContext(CGSizeMake(BasicViewWidth, BasicViewHeight))
@@ -122,15 +136,14 @@ class ZNNewInfoViewController: UIViewController {
                     image?.drawAtPoint(CGPointMake(left, drawPointY))
                     drawPointY += (image?.size.height)!
                     drawPointY += 10
-
+                    
                 }
             }
         }
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(ZNNewInfoViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
+        return image
     }
     
     func image(image:UIImage,didFinishSavingWithError error:NSError?,contextInfo:UnsafePointer<Void>) {
@@ -146,7 +159,7 @@ class ZNNewInfoViewController: UIViewController {
     }
     
     func myFavorite() {
-        
+        self.hidePopView()
         let table = Table("favorite")
         let title = Expression<String>("title")
         let url = Expression<String>("url")
@@ -170,4 +183,23 @@ class ZNNewInfoViewController: UIViewController {
         }
     }
 
+    func shareSDK() {
+        self.hidePopView()
+//        UMSocialData.defaultData().extConfig.tumblrData.link = self.url
+//        
+        let UrlTitle = (messageViewModel.viewArray[0] as! UILabel).text
+//        UMSocialData.defaultData().extConfig.tumblrData.tags = ["share","zafuNews"]
+//        
+//        UMSocialSnsService.presentSnsController(self, appKey: "57a6d10b67e58e020e00239f", shareText: "helloworld", shareImage: nil, shareToSnsNames: [UMShareToTumblr], delegate: self)
+        UMSocialSnsService.presentSnsIconSheetView(self, appKey: "57a6d10b67e58e020e00239f", shareText: "\(UrlTitle!)  \(self.url)", shareImage: self.getInfoImage(), shareToSnsNames: [UMShareToTwitter], delegate: self)
+        
+    }
+    
+    func didFinishGetUMSocialDataInViewController(response: UMSocialResponseEntity!) {
+        if response.responseCode == UMSResponseCodeSuccess {
+            let alertVC = UIAlertController.init(title: "提醒", message: "分享成功", preferredStyle: UIAlertControllerStyle.Alert)
+            alertVC.addAction(UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alertVC, animated: true, completion: nil)
+        }
+    }
 }
