@@ -8,7 +8,6 @@ PODS:
   - Ji/Ji (1.2.0):
     - Ji/Ji-libxml
   - Ji/Ji-libxml (1.2.0)
-  - MBProgressHUD (1.0.0)
   - SnapKit (0.21.1)
   - SQLite.swift (0.10.1)
   - SwiftQRCode (2.0.2)
@@ -21,7 +20,6 @@ DEPENDENCIES:
   - AlamofireImage
   - ESPullToRefresh
   - Ji
-  - MBProgressHUD
   - SnapKit
   - SQLite.swift (~> 0.10.1)
   - SwiftQRCode
@@ -34,7 +32,6 @@ SPEC CHECKSUMS:
   AlamofireImage: 3ccf3347d9ea24580dc11fb892770a0be6a29826
   ESPullToRefresh: 03154f0eff5e4519970f23176c338ece51a955e0
   Ji: ddebb22f9ac445db6e884b66f78ea74fb135fdb7
-  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SnapKit: bbad04cb016c7cead63965f16b00c09318d271ee
   SQLite.swift: 6a6e4b034efc317ce4e203b6af2d3024fee2b570
   SwiftQRCode: 68e920781686e376d70646b90c8ad87fd6523309
